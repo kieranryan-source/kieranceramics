@@ -15,7 +15,6 @@ const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order
 <Base>
   <section class="hero container" aria-labelledby="name">
     <div class="grid">
-      <p class="label">(Intro)</p>
       <p class="intro">
         I make porcelain and stoneware, most of it finished in crystalline glaze. The crystals grow
         in the kiln on their own terms, so every piece is the only one of its kind.
@@ -53,9 +52,8 @@ const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order
     </div>
   </section>
 
-  <section class="section container" aria-labelledby="about-heading">
+  <section class="section container" aria-label="About">
     <div class="grid split">
-      <h2 class="label" id="about-heading">(About)</h2>
       <div class="content">
         <p class="statement" data-fill>
           Each glaze starts as chemistry I mix by hand: zinc, silica and a few colorants. The firing
@@ -69,7 +67,6 @@ const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order
 
   <section class="section container" aria-labelledby="work-heading">
     <div class="grid section-head">
-      <p class="label">(Selected work)</p>
       <h2 class="heading" id="work-heading">From the kiln</h2>
       <a class="more link" href="/work/">All work ({work.length})</a>
     </div>
@@ -82,7 +79,6 @@ const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order
 
   <section class="section container" aria-labelledby="workshops-heading">
     <div class="grid section-head">
-      <p class="label">(Workshops)</p>
       <h2 class="heading" id="workshops-heading">Learn to grow crystals</h2>
       <a class="more link" href="/workshops/">Workshop details</a>
     </div>
@@ -99,7 +95,6 @@ const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order
 
   <section class="section container cta" aria-labelledby="cta-heading">
     <div class="grid split">
-      <p class="label">(Contact)</p>
       <div class="content">
         <h2 class="heading" id="cta-heading">Looking for a piece, or a commission?</h2>
         <a class="link" href="/contact/">Get in touch</a>

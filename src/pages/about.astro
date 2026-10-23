@@ -31,7 +31,6 @@ const steps = [
 
 <Base title="About" description={`Kieran Ryan makes crystalline-glazed porcelain and stoneware in ${site.location}.`} image={crystals}>
   <section class="container grid piece-head">
-    <p class="label">(About)</p>
     <h1 class="heading">Glaze chemistry, slow cooling, and a little luck</h1>
   </section>
 
@@ -41,7 +40,6 @@ const steps = [
 
   <section class="section container" aria-label="Bio">
     <div class="grid split">
-      <p class="label">(Bio)</p>
       <div class="content prose">
         <p>
           I'm a ceramic artist in East Hampton, New York, and something of a glaze geek. Most of my
@@ -58,9 +56,8 @@ const steps = [
     </div>
   </section>
 
-  <section class="section container" aria-labelledby="process-heading">
+  <section class="section container" aria-label="Process">
     <div class="grid split">
-      <h2 class="label" id="process-heading">(Process)</h2>
       <ol class="content steps">
         {steps.map((step, i) => (
           <li>

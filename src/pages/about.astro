@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About" description="Kieran Ryan makes porcelain and crystalline-glazed ceramics on the East End of New York.">
+  <section class="container grid piece-head">
+    <p class="label">(About)</p>
+    <h1 class="heading">Glaze chemistry, slow cooling, and a little luck</h1>
+  </section>
+
+  <section class="section container" aria-label="Bio">
+    <div class="grid split">
+      <p class="label">(Bio)</p>
+      <div class="content prose">
+        <p>
+          I'm a ceramic artist on the East End of New York. Most of my work is porcelain finished in
+          crystalline glaze, a process where zinc and silica crystals grow across the surface while
+          the kiln cools. The chemistry and the firing schedule set the conditions. The crystals
+          decide the rest, which is why no two pieces match.
+        </p>
+        <p>
+          I also slip cast and 3D print in clay, and I teach crystalline glaze workshops at the
+          Clay Art Guild of the Hamptons and classes at Mudita Ceramics School. My work has been
+          shown at the Parrish Art Museum.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" aria-labelledby="process-heading">
+    <div class="grid split">
+      <h2 class="label" id="process-heading">(Process)</h2>
+      <ol class="content steps">
+        <li>
+          <span class="n">1</span>
+          <h3>Form</h3>
+          <p>Each piece is thrown, slip cast in a plaster mold, or printed layer by layer in clay.</p>
+        </li>
+        <li>
+          <span class="n">2</span>
+          <h3>Glaze</h3>
+          <p>Glazes are mixed by hand from raw materials, with zinc and silica as the crystal builders.</p>
+        </li>
+        <li>
+          <span class="n">3</span>
+          <h3>Fire</h3>
+          <p>The kiln holds at set temperatures on the way down, and that's where the crystals grow.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+</Base>

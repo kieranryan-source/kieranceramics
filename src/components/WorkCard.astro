@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Media from './Media.astro';
+
+interface Props {
+  piece: CollectionEntry<'work'>;
+  sizes?: string;
+  aspect?: string; // force a shape, e.g. so a grid of cards lines up
+}
+
+const { piece, sizes, aspect: forced } = Astro.props;
+const { title, year, process, image, imageAlt, aspect } = piece.data;
+---
+
+<a class="card" href={`/work/${piece.id}/`}>
+  <Media image={image} alt={imageAlt ?? title} aspect={forced ?? aspect} sizes={sizes} />
+  <div class="caption">
+    <span class="title">{title}</span>
+    <span class="year">{year}</span>
+    <span class="meta">{process}</span>
+  </div>
+</a>

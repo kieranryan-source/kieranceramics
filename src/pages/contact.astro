@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site.config';
+---
+
+<Base title="Contact" description="Get in touch with Kieran Ryan about a piece, a commission or a workshop.">
+  <section class="container grid piece-head">
+    <p class="label">(Contact)</p>
+    <h1 class="heading">Get in touch</h1>
+    <p class="intro" style="grid-column: 5 / -1">
+      Ask about a piece, a commission or a workshop.
+      <span id="asking" class="muted" hidden></span>
+    </p>
+  </section>
+
+  <section class="section container" aria-label="Ways to reach me">
+    <div class="index">
+      {site.email && (
+        <a class="index-row" href={`mailto:${site.email}`} id="email-row">
+          <span class="primary">Email</span>
+          <span class="secondary">{site.email}</span>
+          <span class="tertiary">Best for orders</span>
+        </a>
+      )}
+      <a class="index-row" href={site.instagram.url} target="_blank" rel="noopener">
+        <span class="primary">Instagram</span>
+        <span class="secondary">{site.instagram.handle}</span>
+        <span class="tertiary">New work posted first</span>
+      </a>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // When someone arrives from "Ask about this piece", name the piece and prefill the email subject.
+  const piece = new URLSearchParams(location.search).get('piece');
+  if (piece) {
+    const note = document.getElementById('asking');
+    if (note) {
+      note.textContent = ` You're asking about: ${piece}.`;
+      note.hidden = false;
+    }
+    const row = document.getElementById('email-row') as HTMLAnchorElement | null;
+    if (row) row.href += `?subject=${encodeURIComponent(piece)}`;
+  }
+</script>

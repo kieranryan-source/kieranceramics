@@ -1,0 +1,30 @@
+---
+// The one place that decides how a piece can be bought.
+//  - sold:                         "Sold"
+//  - available + Stripe link:       "Buy", opens Stripe checkout
+//  - available, no link yet:        "Ask about this piece", goes to the contact page
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  piece: CollectionEntry<'work'>;
+}
+
+const { piece } = Astro.props;
+const shop = piece.data.shop;
+const price = shop?.price != null
+  ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(shop.price)
+  : 'Price on request';
+---
+
+{shop && (
+  <div class="buy-row">
+    <span class="price">{shop.status === 'sold' ? '' : price}</span>
+    {shop.status === 'sold' ? (
+      <span class="button" aria-disabled="true">Sold</span>
+    ) : shop.paymentLink ? (
+      <a class="button" href={shop.paymentLink}>Buy</a>
+    ) : (
+      <a class="button quiet" href={`/contact/?piece=${encodeURIComponent(piece.data.title)}`}>Ask about this piece</a>
+    )}
+  </div>
+)}

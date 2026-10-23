@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { site } from '../site.config';
+
+const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title="Workshops" description="Crystalline glaze workshops and ceramics classes taught by Kieran Ryan on the East End of New York.">
+  <section class="container grid piece-head">
+    <p class="label">(Workshops)</p>
+    <h1 class="heading">Learn to grow crystals</h1>
+    <p class="intro" style="grid-column: 5 / -1">
+      Crystalline glazes have a reputation for being difficult. They're mostly patient chemistry,
+      and the workshops walk you through it from mixing to firing.
+    </p>
+  </section>
+
+  <section class="section container" aria-label="Where I teach">
+    <div class="index">
+      {workshops.map((w) => (
+        <div class="index-row">
+          <span class="primary">{w.data.title}</span>
+          <span class="secondary">
+            {w.data.hostUrl ? <a class="link" href={w.data.hostUrl} target="_blank" rel="noopener">{w.data.host}</a> : w.data.host}
+            <br />{w.data.summary}
+          </span>
+          <span class="tertiary">{w.data.schedule}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section container" aria-labelledby="dates-heading">
+    <div class="grid split">
+      <h2 class="label" id="dates-heading">(Dates)</h2>
+      <div class="content prose">
+        <p>
+          New workshop dates go up on <a href={site.instagram.url} target="_blank" rel="noopener">Instagram</a> first.
+          For a private session or a group, <a href="/contact/">get in touch</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

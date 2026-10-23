@@ -1,0 +1,35 @@
+---
+import { site } from '../site.config';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="grid">
+      <div class="col-a">
+        <p>{site.name}</p>
+        <p class="muted">Ceramics, {site.location}</p>
+      </div>
+
+      <div class="col-b">
+        <h2>Pages</h2>
+        <ul>
+          {site.nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-c">
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href={site.instagram.url} rel="me noopener" target="_blank">Instagram</a></li>
+          {site.email && <li><a href={`mailto:${site.email}`}>Email</a></li>}
+        </ul>
+      </div>
+
+      <div class="col-d muted">
+        <p>&copy; {year} {site.name}</p>
+      </div>
+    </div>
+  </div>
+</footer>

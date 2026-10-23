@@ -1,0 +1,18 @@
+[
+  {
+    "id": "crystalline-clay-art-guild",
+    "title": "Crystalline glazes",
+    "host": "Clay Art Guild of the Hamptons",
+    "summary": "Mix, apply and fire zinc-silicate crystalline glazes, and learn how the firing schedule shapes the crystals.",
+    "schedule": "Dates posted on Instagram",
+    "order": 1
+  },
+  {
+    "id": "mudita",
+    "title": "Ceramics classes",
+    "host": "Mudita Ceramics School of the Hamptons",
+    "summary": "Classes in the studio at Mudita. Draft text: describe what you teach here.",
+    "schedule": "See Mudita for the current schedule",
+    "order": 2
+  }
+]

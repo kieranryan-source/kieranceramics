@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Media from '../../components/Media.astro';
+import BuyButton from '../../components/BuyButton.astro';
+
+export async function getStaticPaths() {
+  const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return work.map((piece, i) => ({
+    params: { slug: piece.id },
+    props: { piece, prev: work[i - 1], next: work[i + 1] },
+  }));
+}
+
+const { piece, prev, next } = Astro.props;
+const { title, year, process, dimensions, image, imageAlt, aspect, shop } = piece.data;
+const { Content } = await render(piece);
+
+const availability = !shop ? 'Not for sale' : shop.status === 'sold' ? 'Sold' : 'Available';
+---
+
+<Base title={title} description={`${title}, ${process}, ${year}. By Kieran Ryan.`}>
+  <article>
+    <header class="container grid piece-head">
+      <p class="label"><a href="/work/">(Work)</a></p>
+      <h1 class="heading">{title}</h1>
+      <dl class="facts">
+        <div><dt>Year</dt><dd>{year}</dd></div>
+        <div><dt>Process</dt><dd>{process}</dd></div>
+        {dimensions && <div><dt>Size</dt><dd>{dimensions}</dd></div>}
+        <div><dt>Availability</dt><dd>{availability}</dd></div>
+      </dl>
+    </header>
+
+    <div class="container piece-media">
+      <div class="grid">
+        <div style="grid-column: 1 / -1">
+          <Media image={image} alt={imageAlt ?? title} aspect={aspect} sizes="(max-width: 1400px) 100vw, 1360px" eager />
+        </div>
+      </div>
+    </div>
+
+    <div class="section container">
+      <div class="grid split">
+        <p class="label">(Notes)</p>
+        <div class="content">
+          <div class="prose"><Content /></div>
+          {shop && <div style="max-width: 28rem; margin-top: 2rem"><BuyButton piece={piece} /></div>}
+        </div>
+      </div>
+    </div>
+
+    <nav class="section container" aria-label="More work">
+      <div class="pager">
+        {prev ? <a class="link" href={`/work/${prev.id}/`}>Previous: {prev.data.title}</a> : <span></span>}
+        {next ? <a class="link" href={`/work/${next.id}/`}>Next: {next.data.title}</a> : <a class="link" href="/work/">All work</a>}
+      </div>
+    </nav>
+  </article>
+</Base>

@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import WorkCard from '../components/WorkCard.astro';
+import BuyButton from '../components/BuyButton.astro';
+
+const forSale = (await getCollection('work'))
+  .filter((p) => p.data.shop)
+  // available pieces first, then sold
+  .sort((a, b) =>
+    a.data.shop!.status === b.data.shop!.status
+      ? a.data.order - b.data.order
+      : a.data.shop!.status === 'available' ? -1 : 1,
+  );
+---
+
+<Base title="Shop" description="One-of-a-kind crystalline and porcelain pieces by Kieran Ryan, available to buy.">
+  <section class="container grid piece-head">
+    <p class="label">(Shop)</p>
+    <h1 class="heading">Available pieces</h1>
+    <p class="intro" style="grid-column: 5 / -1">
+      Every piece is one of a kind. Once it sells, it's gone.
+    </p>
+  </section>
+
+  <section class="section container" aria-label="Pieces for sale">
+    {forSale.length ? (
+      <div class="shop-grid">
+        {forSale.map((piece) => (
+          <div>
+            <WorkCard piece={piece} aspect="4 / 5" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 33vw" />
+            <BuyButton piece={piece} />
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p class="intro">Nothing is for sale right now. New pieces come out of the kiln every few weeks, and they're posted on Instagram first.</p>
+    )}
+  </section>
+
+  <section class="section container" aria-labelledby="shipping-heading">
+    <div class="grid split">
+      <h2 class="label" id="shipping-heading">(Shipping)</h2>
+      <div class="content prose">
+        <p>Draft text: say where you ship, how pieces are packed, and your returns policy. Checkout is handled securely by Stripe.</p>
+      </div>
+    </div>
+  </section>
+</Base>

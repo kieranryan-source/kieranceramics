@@ -3,7 +3,7 @@
 export const site = {
   name: 'Kieran Ryan',
   title: 'Kieran Ryan Ceramics',
-  url: 'https://kieranceramics.com',
+  url: 'https://www.kieranceramics.com',
   description:
     'Porcelain and crystalline-glazed ceramics by Kieran Ryan, made on the East End of New York.',
 

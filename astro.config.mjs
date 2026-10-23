@@ -2,6 +2,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://kieranceramics.com',
+  site: 'https://www.kieranceramics.com',
   trailingSlash: 'always',
 });

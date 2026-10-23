@@ -5,7 +5,10 @@ export const site = {
   title: 'Kieran Ryan Ceramics',
   url: 'https://www.kieranceramics.com',
   description:
-    'Porcelain and crystalline-glazed ceramics by Kieran Ryan, made on the East End of New York.',
+    'Crystalline-glazed porcelain and stoneware by Kieran Ryan, made in East Hampton, New York.',
+
+  // The piece shown large next to the name on the homepage (its file name, without .md)
+  heroPiece: 'cobalt-bottle',
 
   // Leave email empty to hide it everywhere. Add the address you want public.
   email: '',
@@ -14,7 +17,7 @@ export const site = {
     url: 'https://www.instagram.com/kieran.ceramics/',
   },
 
-  location: 'East End, New York',
+  location: 'East Hampton, New York',
 
   nav: [
     { label: 'Work', href: '/work/' },

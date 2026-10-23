@@ -6,8 +6,8 @@ Every push to `main` rebuilds and publishes the site.
 
 ## Add a piece
 
-1. Put the photo in `src/content/work/`, for example `blue-vase.jpg`.
-2. Create `src/content/work/blue-vase.md` next to it:
+1. Put the photo in `src/assets/photos/`, for example `blue-vase.jpg`. Around 1800px on the long side is plenty.
+2. Create `src/content/work/blue-vase.md`:
 
 ```md
 ---
@@ -15,11 +15,11 @@ title: Blue vase
 year: 2026
 process: Crystalline glaze on porcelain
 dimensions: 21 x 12 cm
-image: ./blue-vase.jpg
+image: ../../assets/photos/blue-vase.jpg
 imageAlt: Tall porcelain vase with pale blue crystals on a cobalt ground
 featured: true      # show on the homepage (the first four featured pieces appear)
 order: 1            # lower numbers come first
-shop:               # leave this whole block out if the piece isn't for sale
+shop:               # leave this whole block out unless it's for sale or already sold
   status: available # or: sold
   price: 340
   paymentLink: https://buy.stripe.com/...
@@ -30,7 +30,9 @@ A few sentences about the piece, the firing, and care.
 
 The file name becomes the address: `blue-vase.md` is `/work/blue-vase/`.
 
-Photos keep their own shape unless you add `aspect: 4 / 5` (or similar) to crop them.
+On the piece's own page the photo keeps its shape (add `aspect: 4 / 5` or similar to crop it). In the work grids, photos are cropped to fit a repeating wide, narrow, narrow, wide pattern, so use `order` to put wide objects like bowls in the wide slots (1, 4, 5, 8, 9, 12...).
+
+The large photo next to the name on the homepage is set by `heroPiece` in `src/site.config.ts`.
 
 ## Sell a piece
 

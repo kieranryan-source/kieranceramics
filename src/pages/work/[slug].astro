@@ -16,10 +16,10 @@ const { piece, prev, next } = Astro.props;
 const { title, year, process, dimensions, image, imageAlt, aspect, shop } = piece.data;
 const { Content } = await render(piece);
 
-const availability = !shop ? 'Not for sale' : shop.status === 'sold' ? 'Sold' : 'Available';
+const availability = !shop ? null : shop.status === 'sold' ? 'Sold' : 'Available';
 ---
 
-<Base title={title} description={`${title}, ${process}, ${year}. By Kieran Ryan.`}>
+<Base title={title} description={`${title}, ${process}, ${year}. By Kieran Ryan.`} image={image}>
   <article>
     <header class="container grid piece-head">
       <p class="label"><a href="/work/">(Work)</a></p>
@@ -28,14 +28,14 @@ const availability = !shop ? 'Not for sale' : shop.status === 'sold' ? 'Sold' : 
         <div><dt>Year</dt><dd>{year}</dd></div>
         <div><dt>Process</dt><dd>{process}</dd></div>
         {dimensions && <div><dt>Size</dt><dd>{dimensions}</dd></div>}
-        <div><dt>Availability</dt><dd>{availability}</dd></div>
+        {availability && <div><dt>Availability</dt><dd>{availability}</dd></div>}
       </dl>
     </header>
 
     <div class="container piece-media">
       <div class="grid">
-        <div style="grid-column: 1 / -1">
-          <Media image={image} alt={imageAlt ?? title} aspect={aspect} sizes="(max-width: 1400px) 100vw, 1360px" eager />
+        <div class="piece-photo">
+          <Media image={image} alt={imageAlt ?? title} aspect={aspect} sizes="(max-width: 860px) 100vw, 66vw" eager />
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@ const availability = !shop ? 'Not for sale' : shop.status === 'sold' ? 'Sold' : 
         <p class="label">(Notes)</p>
         <div class="content">
           <div class="prose"><Content /></div>
-          {shop && <div style="max-width: 28rem; margin-top: 2rem"><BuyButton piece={piece} /></div>}
+          {shop?.status === 'available' && <div style="max-width: 28rem; margin-top: 2rem"><BuyButton piece={piece} /></div>}
         </div>
       </div>
     </div>

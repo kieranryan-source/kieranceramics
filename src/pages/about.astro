@@ -1,27 +1,58 @@
 ---
 import Base from '../layouts/Base.astro';
+import Media from '../components/Media.astro';
+import crystals from '../assets/photos/crystals-closeup.jpg';
+import formPhoto from '../assets/photos/process-form.jpg';
+import glazePhoto from '../assets/photos/process-glaze.jpg';
+import firePhoto from '../assets/photos/process-fire.jpg';
+import { site } from '../site.config';
+
+const steps = [
+  {
+    title: 'Form',
+    text: 'Each piece is thrown, slip cast or printed in clay, then bisque fired. Crystalline pieces get a pedestal so the running glaze has somewhere to go.',
+    image: formPhoto,
+    alt: 'Bisque-fired bottles, cups and a bowl, each standing on its own pedestal',
+  },
+  {
+    title: 'Glaze',
+    text: 'Glazes are mixed by hand from raw materials. A new recipe starts as rows of test tiles, often nearly identical except for the colorant.',
+    image: glazePhoto,
+    alt: 'Dozens of small glazed test tiles lined up in rows before firing',
+  },
+  {
+    title: 'Fire',
+    text: 'The kiln holds at set temperatures on the way down, and that is where the crystals grow. The fired tiles show what each colorant does.',
+    image: firePhoto,
+    alt: 'A tray of fired crystalline test tiles in blues, greens, browns and whites',
+  },
+];
 ---
 
-<Base title="About" description="Kieran Ryan makes porcelain and crystalline-glazed ceramics on the East End of New York.">
+<Base title="About" description={`Kieran Ryan makes crystalline-glazed porcelain and stoneware in ${site.location}.`} image={crystals}>
   <section class="container grid piece-head">
     <p class="label">(About)</p>
     <h1 class="heading">Glaze chemistry, slow cooling, and a little luck</h1>
   </section>
+
+  <div class="container piece-media">
+    <Media image={crystals} alt="Close-up of pale gold zinc silicate crystals spreading across a glazed surface" aspect="2 / 1" sizes="(max-width: 1400px) 100vw, 1360px" eager />
+  </div>
 
   <section class="section container" aria-label="Bio">
     <div class="grid split">
       <p class="label">(Bio)</p>
       <div class="content prose">
         <p>
-          I'm a ceramic artist on the East End of New York. Most of my work is porcelain finished in
-          crystalline glaze, a process where zinc and silica crystals grow across the surface while
-          the kiln cools. The chemistry and the firing schedule set the conditions. The crystals
-          decide the rest, which is why no two pieces match.
+          I'm a ceramic artist in East Hampton, New York, and something of a glaze geek. Most of my
+          work is porcelain and stoneware finished in crystalline glaze, a process where zinc and
+          silica crystals grow across the surface while the kiln cools. The chemistry and the firing
+          schedule set the conditions. The crystals decide the rest, which is why no two pieces match.
         </p>
         <p>
-          I also slip cast and 3D print in clay, and I teach crystalline glaze workshops at the
-          Clay Art Guild of the Hamptons and classes at Mudita Ceramics School. My work has been
-          shown at the Parrish Art Museum.
+          I also pierce bowls and platters by hand, slip cast, and 3D print in clay. I teach
+          crystalline glaze workshops at the Clay Art Guild of the Hamptons and classes at Mudita
+          Ceramics School. My work has been shown at the Parrish Art Museum.
         </p>
       </div>
     </div>
@@ -31,21 +62,14 @@ import Base from '../layouts/Base.astro';
     <div class="grid split">
       <h2 class="label" id="process-heading">(Process)</h2>
       <ol class="content steps">
-        <li>
-          <span class="n">1</span>
-          <h3>Form</h3>
-          <p>Each piece is thrown, slip cast in a plaster mold, or printed layer by layer in clay.</p>
-        </li>
-        <li>
-          <span class="n">2</span>
-          <h3>Glaze</h3>
-          <p>Glazes are mixed by hand from raw materials, with zinc and silica as the crystal builders.</p>
-        </li>
-        <li>
-          <span class="n">3</span>
-          <h3>Fire</h3>
-          <p>The kiln holds at set temperatures on the way down, and that's where the crystals grow.</p>
-        </li>
+        {steps.map((step, i) => (
+          <li>
+            <Media image={step.image} alt={step.alt} aspect="1 / 1" sizes="(max-width: 760px) 100vw, 22vw" />
+            <span class="n">{i + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </li>
+        ))}
       </ol>
     </div>
   </section>

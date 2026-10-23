@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import WorkCard from '../../components/WorkCard.astro';
+import { slotAspect, slotSizes } from '../../lib/work-grid';
 
 const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
 
@@ -12,7 +13,7 @@ const previews = await Promise.all(
 );
 ---
 
-<Base title="Work" description="Porcelain and crystalline-glazed pieces by Kieran Ryan.">
+<Base title="Work" description="Crystalline-glazed porcelain and stoneware, pierced bowls and printed clay by Kieran Ryan.">
   <section class="container piece-head grid">
     <p class="label">(Work)</p>
     <h1 class="heading">Everything from the kiln</h1>
@@ -32,7 +33,7 @@ const previews = await Promise.all(
 
   <section class="section container" aria-label="Gallery">
     <div class="grid work-grid">
-      {work.map((piece) => <WorkCard piece={piece} />)}
+      {work.map((piece, i) => <WorkCard piece={piece} aspect={slotAspect(i)} sizes={slotSizes(i)} />)}
     </div>
   </section>
 </Base>

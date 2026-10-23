@@ -370,13 +370,16 @@ a.index-row:hover { color: var(--accent); }
 /* Fit the whole photo on screen: tall photos get narrower instead of taller */
 .piece-media .media {
   width: min(100%, calc((100svh - var(--header-h) - 3rem) * var(--ratio, 1)));
-  margin-left: auto;
 }
+.piece-photo { grid-column: 5 / -1; }
+@media (max-width: 860px) { .piece-photo { grid-column: 1 / -1; } }
 .pager { display: flex; justify-content: space-between; gap: 1rem; font-size: var(--step--1); }
 
 /* Steps on the About page */
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: 2rem; }
 .steps li { border-top: 1px solid var(--rule); padding-top: 1rem; }
+.steps li:has(.media) { border-top: 0; padding-top: 0; }
+.steps .media { margin-bottom: 0.9rem; }
 .steps .n { color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
 .steps h3 { font-size: var(--step-1); font-weight: var(--weight-medium); letter-spacing: -0.01em; margin: 0.6rem 0 0.4rem; }
 .steps p { font-size: var(--step--1); color: var(--muted); max-width: 34ch; }

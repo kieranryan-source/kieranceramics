@@ -1,6 +1,6 @@
 # kieranceramics.com
 
-Kieran Ryan's ceramics site. Built with [Astro](https://astro.build), hosted on Cloudflare Pages, checkout through Stripe Payment Links.
+Kieran Ryan's ceramics site. Built with [Astro](https://astro.build), hosted free on Cloudflare Workers (static assets), checkout through Stripe Payment Links.
 
 Every push to `main` rebuilds and publishes the site.
 
@@ -64,9 +64,10 @@ npm run dev      # http://localhost:4321
 npm run build    # production build into dist/
 ```
 
-## Cloudflare Pages settings
+## Cloudflare settings
 
-- Framework preset: Astro
+The Cloudflare Worker `kieranceramics` is connected to this repo.
+
 - Build command: `npm run build`
-- Build output directory: `dist`
+- Deploy command: `npx wrangler deploy` (reads `wrangler.jsonc`, which serves `dist/`)
 - Node version comes from `.node-version`

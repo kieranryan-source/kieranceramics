@@ -4,7 +4,7 @@
   Every color, font, size and spacing value the site uses is defined here
   as a CSS custom property. Components never hard-code these values.
 
-  Current theme: "Studio" (white walls, near-black ink, one light sans serif,
+  Current theme: "Studio" (white walls, near-black ink, one sans serif at a regular weight,
   widely spaced capitals for the name). The photos carry the color.
 */
 
@@ -19,10 +19,9 @@
   --scrim: oklch(0 0 0 / 0.26);        /* darkens banner photos so white text reads */
   --on-photo: oklch(1 0 0);            /* text on top of a banner photo */
 
-  /* Type: Work Sans for the name in the header, a reading font for everything else */
-  --font-display: "Work Sans Variable", "Work Sans", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --font-sans: var(--font-display);
-  --weight-light: 300;                 /* body text and large titles */
+  /* Type: one family, Work Sans, at a regular weight for easy reading */
+  --font-sans: "Work Sans Variable", "Work Sans", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --weight-light: 300;                 /* only the tagline under the name */
   --weight-regular: 400;
   --weight-medium: 500;
 
@@ -38,7 +37,8 @@
 
   --tracking-name: 0.32em;             /* KIERAN RYAN in the header */
   --tracking-caps: 0.16em;             /* small uppercase labels and buttons */
-  --tracking-nav: 0.12em;              /* lowercase nav links */
+  --tracking-nav: 0.12em;              /* lowercase links (footer, filters) */
+  --tracking-menu: 0.1em;              /* small caps in the header menu */
   --tracking-title: 0.02em;
 
   /* Layout */
@@ -52,22 +52,3 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/*
-  FONT PREVIEW (temporary)
-  Each option swaps the reading font and sets body text to a regular weight
-  instead of light. The name and tagline in the header stay in Work Sans.
-  Pick one with the switcher in the corner of the preview site.
-*/
-:root[data-font="work-regular"] { --weight-light: 400; }
-:root[data-font="inter"] {
-  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --weight-light: 400;
-}
-:root[data-font="franklin"] {
-  --font-sans: "Libre Franklin Variable", "Libre Franklin", ui-sans-serif, system-ui, sans-serif;
-  --weight-light: 400;
-}
-:root[data-font="dm"] {
-  --font-sans: "DM Sans Variable", "DM Sans", ui-sans-serif, system-ui, sans-serif;
-  --weight-light: 400;
-}

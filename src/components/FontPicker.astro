@@ -1,0 +1,38 @@
+---
+// Temporary: lets you compare reading fonts on the preview site.
+// Remove this component (and its line in Base.astro) once a font is chosen.
+const options = [
+  { id: 'work', label: 'Current' },
+  { id: 'work-regular', label: 'Work Sans regular' },
+  { id: 'inter', label: 'Inter' },
+  { id: 'franklin', label: 'Libre Franklin (Graphik stand-in)' },
+  { id: 'dm', label: 'DM Sans' },
+];
+---
+
+<div class="font-picker" aria-label="Font preview">
+  <p>Font preview</p>
+  <div>
+    {options.map((o) => <button type="button" data-font-option={o.id}>{o.label}</button>)}
+  </div>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-font-option]');
+  const mark = () => {
+    const current = document.documentElement.dataset.font ?? 'work';
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.fontOption === current)));
+  };
+  buttons.forEach((b) =>
+    b.addEventListener('click', () => {
+      const id = b.dataset.fontOption!;
+      document.documentElement.dataset.font = id;
+      try { localStorage.setItem('font-preview', id); } catch {}
+      const url = new URL(location.href);
+      url.searchParams.set('font', id);
+      history.replaceState(null, '', url);
+      mark();
+    }),
+  );
+  mark();
+</script>

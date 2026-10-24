@@ -19,9 +19,10 @@
   --scrim: oklch(0 0 0 / 0.26);        /* darkens banner photos so white text reads */
   --on-photo: oklch(1 0 0);            /* text on top of a banner photo */
 
-  /* Type: one family, Work Sans, used light */
-  --font-sans: "Work Sans Variable", "Work Sans", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --weight-light: 300;
+  /* Type: Work Sans for the name in the header, a reading font for everything else */
+  --font-display: "Work Sans Variable", "Work Sans", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-display);
+  --weight-light: 300;                 /* body text and large titles */
   --weight-regular: 400;
   --weight-medium: 500;
 
@@ -49,4 +50,24 @@
 
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/*
+  FONT PREVIEW (temporary)
+  Each option swaps the reading font and sets body text to a regular weight
+  instead of light. The name and tagline in the header stay in Work Sans.
+  Pick one with the switcher in the corner of the preview site.
+*/
+:root[data-font="work-regular"] { --weight-light: 400; }
+:root[data-font="inter"] {
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --weight-light: 400;
+}
+:root[data-font="franklin"] {
+  --font-sans: "Libre Franklin Variable", "Libre Franklin", ui-sans-serif, system-ui, sans-serif;
+  --weight-light: 400;
+}
+:root[data-font="dm"] {
+  --font-sans: "DM Sans Variable", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --weight-light: 400;
 }

@@ -263,6 +263,15 @@ a.banner-inner:hover img { transform: scale(1.02); }
 .banner-subtitle { font-size: var(--step-0); font-weight: var(--weight-regular); max-width: 36ch; text-wrap: balance; }
 .banner .button { margin-top: 0.75rem; }
 .banner.plain .banner-text { color: var(--ink); }
+.banner.below .banner-inner { display: block; height: auto; overflow: visible; background: none; }
+.banner.below .banner-inner::after { content: none; }
+.banner.below img { position: static; height: clamp(16rem, 10rem + 20vw, 30rem); }
+.banner.below .banner-text { color: var(--ink); padding: 1.75rem var(--gutter) 0; margin-inline: auto; }
+.banner.below .banner-title { font-size: var(--step-2); }
+.banner.below .banner-subtitle { color: var(--muted); }
+/* the photo doesn't zoom when the text sits under it; the title underlines instead */
+.banner.below a.banner-inner:hover img { transform: none; }
+.banner.below a.banner-inner:hover .banner-title { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
 
 /* Media */
 .media { position: relative; overflow: hidden; background: var(--wash); }

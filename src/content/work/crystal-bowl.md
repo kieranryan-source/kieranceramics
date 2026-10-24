@@ -16,6 +16,6 @@ morePhotos:
     alt: The inside wall at an angle, crystals with sharp centers on the pink and gold ground
 order: 5
 ---
-A small bowl left to grow large crystals, using a test recipe on porcelain. Nickel, iron and a few other oxides work together to produce muted blue-green crystals on an earthy, warm background.
+A small bowl left to grow large crystals, using a test recipe on porcelain. It grows muted blue-green crystals on an earthy, warm background.
 
 It went through several tests at once and stays in my workspace as a reminder of the results.

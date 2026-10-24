@@ -5,6 +5,11 @@ process: Crystalline glaze, iron
 categories: [crystalline]
 image: ../../assets/photos/gold-crystal-bottle.jpg
 imageAlt: A small, rounded bottle with bright gold crystals on a slightly metallic field
+morePhotos:
+  - image: ../../assets/photos/gold-crystal-bottle-shoulder.jpg
+    alt: The shoulder of the bottle, gold crystals along the edge where the glaze breaks to a grey-blue line
+  - image: ../../assets/photos/gold-crystal-bottle-macro.jpg
+    alt: Close-up of the lower body, small fan-shaped gold crystals on a pale ground
 order: 7
 shop:
   status: sold

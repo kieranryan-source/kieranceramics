@@ -26,6 +26,15 @@ const work = defineCollection({
           }),
         )
         .default([]),
+      // A short silent clip for the piece's page. Put the .mp4 and a poster frame in public/video/
+      video: z
+        .object({
+          src: z.string(),                       // e.g. /video/cobalt-bottle-kiln.mp4
+          webm: z.string().optional(),           // same clip as .webm, for browsers that can't play the .mp4
+          poster: z.string().optional(),         // e.g. /video/cobalt-bottle-kiln.jpg
+          caption: z.string(),                   // also read out by screen readers
+        })
+        .optional(),
       featured: z.boolean().default(false),      // show on the homepage
       order: z.number().default(100),            // lower numbers come first
       shop: z

@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { piece, prev, next } = Astro.props;
-const { title, year, process, dimensions, image, imageAlt, aspect, morePhotos, shop } = piece.data;
+const { title, year, process, dimensions, image, imageAlt, aspect, morePhotos, video, shop } = piece.data;
 const pieceCategories = categories.filter((c) => piece.data.categories.includes(c.id));
 const { Content } = await render(piece);
 
@@ -73,6 +73,26 @@ const isWide = (i: number) => i === 0 || (i === morePhotos.length - 1 && i % 2 =
         ))}
       </div>
     )}
+
+    {video && (
+      <figure class="piece-video">
+        <video poster={video.poster} autoplay muted loop playsinline preload="metadata" aria-label={video.caption}>
+          <source src={video.src} type="video/mp4" />
+          {video.webm && <source src={video.webm} type="video/webm" />}
+        </video>
+        <figcaption>{video.caption}</figcaption>
+      </figure>
+    )}
+    <script>
+      // For people who ask for less motion, the clip waits until they press play.
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll<HTMLVideoElement>('.piece-video video').forEach((v) => {
+          v.pause();
+          v.autoplay = false;
+          v.controls = true;
+        });
+      }
+    </script>
 
     <nav class="section" aria-label="More work">
       <div class="pager">

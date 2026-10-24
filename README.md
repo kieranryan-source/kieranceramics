@@ -22,6 +22,11 @@ morePhotos:         # optional: more photos for the piece's own page, laid out a
   - image: ../../assets/photos/blue-vase-detail.jpg
     alt: Close-up of the crystals near the rim
   - image: ../../assets/photos/blue-vase-back.jpg
+video:              # optional: a short silent clip, shown under the photos
+  src: /video/blue-vase.mp4
+  webm: /video/blue-vase.webm
+  poster: /video/blue-vase.jpg
+  caption: The vase just out of the kiln
 featured: true      # show on the homepage (the first four featured pieces appear)
 order: 1            # lower numbers come first
 shop:               # leave this whole block out unless it's for sale or already sold
@@ -38,6 +43,14 @@ The file name becomes the address: `blue-vase.md` is `/work/blue-vase/`.
 `categories` sorts the piece on the Work page, where visitors can filter by kind of work. Each category has its own page, like `/work/category/crystalline/`, and a category only shows once it has a piece in it. To rename a category or add a new one, edit `src/lib/categories.ts`.
 
 Extra photos under `morePhotos` go across the page below the main photo and text: the first one large, then the rest in pairs (cropped to 3:2 so each pair lines up). An odd one out at the end goes large too. Landscape shots work best.
+
+A `video` plays on its own, silently and on a loop, below the photos (people who ask their device for less motion get a play button instead). Keep clips short and put the files in `public/video/`. To shrink a phone clip to about 1.5 MB:
+
+```sh
+ffmpeg -i clip.MOV -an -vf scale=720:-2 -c:v libx264 -crf 28 -preset slow -movflags +faststart public/video/blue-vase.mp4
+ffmpeg -i public/video/blue-vase.mp4 -c:v libvpx-vp9 -b:v 0 -crf 38 public/video/blue-vase.webm
+ffmpeg -ss 0.3 -i public/video/blue-vase.mp4 -frames:v 1 public/video/blue-vase.jpg
+```
 
 On the piece's own page the main photo keeps its shape (add `aspect: 4 / 5` or similar to crop it). In the galleries every photo is cropped square, three to a row, so keep the piece centered in the shot.
 

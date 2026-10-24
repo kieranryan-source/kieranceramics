@@ -88,7 +88,7 @@ Shows and markets are in `src/data/exhibitions.json`, newest first by `order`. P
 
 ## Drafts to finish
 
-Some pages have grey italic "Draft:" notes where only you know the answer: timing and price on Commissions, and the Mudita class description in `src/data/workshops.json`. Search the code for `Draft:` to find them all.
+One "Draft:" note is left, where only you know the answer: the Mudita class description in `src/data/workshops.json`. Search the code for `Draft:` to find them all.
 
 When shipping opens again, update the Shipping section in `src/pages/shop-information.astro`.
 

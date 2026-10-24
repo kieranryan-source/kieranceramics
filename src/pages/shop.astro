@@ -2,62 +2,40 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import WorkCard from '../components/WorkCard.astro';
-import BuyButton from '../components/BuyButton.astro';
 import { site } from '../site.config';
 
 const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
 const available = work.filter((p) => p.data.shop?.status === 'available');
 const sold = work.filter((p) => p.data.shop?.status === 'sold');
-const cardSizes = '(max-width: 560px) 100vw, (max-width: 960px) 50vw, 33vw';
+// Pieces for sale come first, sold pieces after with a "Sold" tag
+const listed = [...available, ...sold];
 ---
 
 <Base title="Shop" description="One-of-a-kind crystalline pieces by Kieran Ryan.">
-  <section class="container grid piece-head">
-    <h1 class="heading">Pieces for sale</h1>
-    <p class="intro" style="grid-column: 5 / -1">
+  <section class="container page-head narrow">
+    <h1 class="page-title">Shop</h1>
+    <p class="lead">
       Every piece is one of a kind. Once it sells, it's gone.
+      {available.length === 0 && (
+        <>
+          <br />New pieces go up on <a class="link" href={site.instagram.url} target="_blank" rel="noopener">Instagram</a> first.
+        </>
+      )}
     </p>
   </section>
 
-  <section class="section container" aria-label="Pieces for sale">
-    {available.length ? (
-      <div class="shop-grid">
-        {available.map((piece) => (
-          <div>
-            <WorkCard piece={piece} aspect="4 / 5" sizes={cardSizes} />
-            <BuyButton piece={piece} />
-          </div>
-        ))}
-      </div>
-    ) : (
-      <div class="grid split">
-        <div class="content prose">
-          <p class="intro">
-            Nothing is listed right now. New pieces go up on <a href={site.instagram.url} target="_blank" rel="noopener">Instagram</a> first.
-            If you see something you like there, <a href="/contact/">ask about it</a>.
-          </p>
-        </div>
-      </div>
-    )}
-  </section>
-
-  {sold.length > 0 && (
-    <section class="section container" aria-labelledby="sold-heading">
-      <div class="grid section-head">
-        <h2 class="heading" id="sold-heading">Recently sold</h2>
-      </div>
-      <div class="shop-grid">
-        {sold.map((piece) => <WorkCard piece={piece} aspect="4 / 5" sizes={cardSizes} />)}
+  {listed.length > 0 && (
+    <section class="section container" aria-label="Pieces">
+      <div class="gallery">
+        {listed.map((piece, i) => <WorkCard piece={piece} showPrice eager={i < 3} />)}
       </div>
     </section>
   )}
 
-  <section class="section container" aria-labelledby="shipping-heading">
-    <div class="grid split">
-      <div class="content prose">
-        <h2 class="subheading" id="shipping-heading">Shipping and returns</h2>
-        <p>Draft text: say where you ship, how pieces are packed, and your returns policy. Checkout is handled securely by Stripe.</p>
-      </div>
+  <section class="section container narrow" aria-labelledby="shipping-heading">
+    <div class="prose" style="text-align: center">
+      <h2 id="shipping-heading" style="margin-top: 0">Shipping and returns</h2>
+      <p>Draft text: say where you ship, how pieces are packed, and your returns policy. Checkout is handled securely by Stripe.</p>
     </div>
   </section>
 </Base>

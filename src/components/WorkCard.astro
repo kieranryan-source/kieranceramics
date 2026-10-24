@@ -1,22 +1,32 @@
 ---
+// One photo tile in a gallery grid, with a small caption underneath.
+// In the shop (showPrice) tiles show the price, and a "Sold" tag once a piece has sold.
 import type { CollectionEntry } from 'astro:content';
 import Media from './Media.astro';
 
 interface Props {
   piece: CollectionEntry<'work'>;
   sizes?: string;
-  aspect?: string; // force a shape, e.g. so a grid of cards lines up
+  aspect?: string;      // force a shape so a grid of tiles lines up
+  showPrice?: boolean;
+  eager?: boolean;      // load right away (for tiles at the top of a page)
 }
 
-const { piece, sizes, aspect: forced } = Astro.props;
-const { title, year, process, image, imageAlt, aspect } = piece.data;
+const { piece, sizes = '(max-width: 560px) 100vw, (max-width: 960px) 50vw, 33vw', aspect = '1 / 1', showPrice = false, eager = false } = Astro.props;
+const { title, process, image, imageAlt, shop } = piece.data;
+const sold = shop?.status === 'sold';
+const price = shop?.price != null
+  ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(shop.price)
+  : 'Price on request';
 ---
 
-<a class="card" href={`/work/${piece.id}/`}>
-  <Media image={image} alt={imageAlt ?? title} aspect={forced ?? aspect} sizes={sizes} />
-  <div class="caption">
-    <span class="title">{title}</span>
-    <span class="year">{year}</span>
-    <span class="meta">{process}</span>
+<a class="tile" href={`/work/${piece.id}/`}>
+  <div class="tile-photo">
+    <Media image={image} alt={imageAlt ?? title} aspect={aspect} sizes={sizes} eager={eager} />
+    {showPrice && sold && <span class="tag">Sold</span>}
+  </div>
+  <div class="tile-caption">
+    <span class="tile-title">{title}</span>
+    <span class="tile-meta">{showPrice && shop ? (sold ? 'Sold' : price) : process}</span>
   </div>
 </a>

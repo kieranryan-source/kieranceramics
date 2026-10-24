@@ -30,9 +30,11 @@ A few sentences about the piece, the firing, and care.
 
 The file name becomes the address: `blue-vase.md` is `/work/blue-vase/`.
 
-On the piece's own page the photo keeps its shape (add `aspect: 4 / 5` or similar to crop it). In the work grids, photos are cropped to fit a repeating wide, narrow, narrow, wide pattern, so use `order` to put wide objects like bowls in the wide slots (1, 4, 5, 8, 9, 12...).
+On the piece's own page the photo keeps its shape (add `aspect: 4 / 5` or similar to crop it). In the galleries every photo is cropped square, three to a row, so keep the piece centered in the shot.
 
-The large photo next to the name on the homepage is set by `heroPiece` in `src/site.config.ts`.
+The homepage shows six pieces: the `featured` ones first, then the rest in `order`.
+
+The full-width photo at the top of the homepage, and its title, line and button, are set by `hero` in `src/site.config.ts`.
 
 ## Sell a piece
 
@@ -52,9 +54,11 @@ How the button behaves:
 
 All colors, fonts, sizes and spacing live in `src/styles/theme.css`. Change the values there and the whole site follows. Layout and components are in `src/styles/global.css` and only use those values.
 
+The fonts are Cormorant Garamond (the name, titles) and Work Sans (everything else). Both are free and served from the site itself, installed as npm packages and imported at the top of `src/layouts/Base.astro`.
+
 ## Change site details
 
-`src/site.config.ts` holds the name, Instagram, public email (empty means hidden) and the nav. Workshops are in `src/data/workshops.json`.
+`src/site.config.ts` holds the name, the line under it in the header, the homepage photo, Instagram, public email (empty means hidden) and the nav. Workshops are in `src/data/workshops.json`.
 
 ## Work on it locally
 

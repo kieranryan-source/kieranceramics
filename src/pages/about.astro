@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
 import Media from '../components/Media.astro';
 import crystals from '../assets/photos/crystals-closeup.jpg';
 import formPhoto from '../assets/photos/process-form.jpg';
@@ -30,44 +31,48 @@ const steps = [
 ---
 
 <Base title="About" description={`Kieran Ryan makes crystalline-glazed porcelain and stoneware in ${site.location}.`} image={crystals}>
-  <section class="container grid piece-head">
-    <h1 class="heading">Glaze chemistry, slow cooling, and a little luck</h1>
+  <section class="container page-head narrow">
+    <h1 class="page-title">Glaze chemistry, slow cooling, and a little luck</h1>
   </section>
 
-  <div class="container piece-media">
-    <Media image={crystals} alt="Close-up of pale gold zinc silicate crystals spreading across a glazed surface" aspect="2 / 1" sizes="(max-width: 1400px) 100vw, 1360px" eager />
+  <section class="section container narrow" aria-label="Bio">
+    <div class="prose">
+      <p>
+        I'm a ceramic artist in East Hampton, New York, and something of a glaze geek. Most of my
+        work is porcelain and stoneware finished in crystalline glaze, a process where zinc and
+        silica crystals grow across the surface while the kiln cools. The chemistry and the firing
+        schedule set the conditions. The crystals decide the rest, which is why no two pieces match.
+      </p>
+      <p>
+        I also pierce bowls and platters by hand, slip cast, and 3D print in clay. I teach
+        crystalline glaze workshops at the Clay Art Guild of the Hamptons and classes at Mudita
+        Ceramics School. My work has been shown at the Parrish Art Museum.
+      </p>
+    </div>
+  </section>
+
+  <section class="section container" aria-labelledby="process-heading">
+    <div class="section-head">
+      <h2 class="page-title" id="process-heading">Process</h2>
+    </div>
+    <ol class="steps">
+      {steps.map((step) => (
+        <li>
+          <Media image={step.image} alt={step.alt} aspect="1 / 1" sizes="(max-width: 760px) 100vw, 33vw" />
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <div class="section">
+    <Banner
+      heading="h2"
+      href="/work/"
+      image={crystals}
+      alt="Close-up of pale gold zinc silicate crystals spreading across a glazed surface"
+      title="See the work"
+    />
   </div>
-
-  <section class="section container" aria-label="Bio">
-    <div class="grid split">
-      <div class="content prose">
-        <p>
-          I'm a ceramic artist in East Hampton, New York, and something of a glaze geek. Most of my
-          work is porcelain and stoneware finished in crystalline glaze, a process where zinc and
-          silica crystals grow across the surface while the kiln cools. The chemistry and the firing
-          schedule set the conditions. The crystals decide the rest, which is why no two pieces match.
-        </p>
-        <p>
-          I also pierce bowls and platters by hand, slip cast, and 3D print in clay. I teach
-          crystalline glaze workshops at the Clay Art Guild of the Hamptons and classes at Mudita
-          Ceramics School. My work has been shown at the Parrish Art Museum.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section container" aria-label="Process">
-    <div class="grid split">
-      <ol class="content steps">
-        {steps.map((step, i) => (
-          <li>
-            <Media image={step.image} alt={step.alt} aspect="1 / 1" sizes="(max-width: 760px) 100vw, 22vw" />
-            <span class="n">{i + 1}</span>
-            <h3>{step.title}</h3>
-            <p>{step.text}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
 </Base>

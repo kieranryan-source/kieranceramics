@@ -13,8 +13,8 @@ morePhotos:
     alt: Close-up of the shoulder and upper body, round deep blue crystals on a lighter blue ground
   - image: ../../assets/photos/cobalt-bottle-foot.jpg
     alt: The bottle on its side, crystals running all the way down to the bare clay foot
-  - image: ../../assets/photos/cobalt-bottle-neck.jpg
-    alt: The flared neck, a few separate crystals on plain blue glaze
+  - image: ../../assets/photos/cobalt-bottle-lower-wall.jpg
+    alt: Close-up of the lower wall, round deep blue crystals crowding down to the bare clay foot
 order: 6
 shop:
   status: sold

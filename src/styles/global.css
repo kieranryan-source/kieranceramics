@@ -240,6 +240,7 @@ body {
   object-position: var(--focus, 50% 50%);
 }
 .banner-inner::after { content: ""; position: absolute; inset: 0; background: var(--scrim); }
+.banner.plain .banner-inner::after { content: none; }
 a.banner-inner img { transition: transform 1200ms var(--ease-out); }
 a.banner-inner:hover img { transform: scale(1.02); }
 .banner-text {
@@ -261,6 +262,7 @@ a.banner-inner:hover img { transform: scale(1.02); }
 }
 .banner-subtitle { font-size: var(--step-0); font-weight: var(--weight-regular); max-width: 36ch; text-wrap: balance; }
 .banner .button { margin-top: 0.75rem; }
+.banner.plain .banner-text { color: var(--ink); }
 
 /* Media */
 .media { position: relative; overflow: hidden; background: var(--wash); }

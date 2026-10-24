@@ -18,6 +18,7 @@ categories: [crystalline]   # one or more of: crystalline, standard-glazes, 3d-p
 dimensions: 21 x 12 cm
 image: ../../assets/photos/blue-vase.jpg
 imageAlt: Tall porcelain vase with pale blue crystals on a cobalt ground
+thumbnail: ../../assets/photos/blue-vase-square.jpg   # optional: a square version for the galleries
 morePhotos:         # optional: more photos for the piece's own page, laid out across the page under it
   - image: ../../assets/photos/blue-vase-detail.jpg
     alt: Close-up of the crystals near the rim
@@ -52,7 +53,7 @@ ffmpeg -i public/video/blue-vase.mp4 -c:v libvpx-vp9 -b:v 0 -crf 38 public/video
 ffmpeg -ss 0.3 -i public/video/blue-vase.mp4 -frames:v 1 public/video/blue-vase.jpg
 ```
 
-On the piece's own page the main photo keeps its shape (add `aspect: 4 / 5` or similar to crop it). In the galleries every photo is cropped square, three to a row, so keep the piece centered in the shot.
+On the piece's own page the main photo keeps its shape (add `aspect: 4 / 5` or similar to crop it). In the galleries every photo is cropped square, three to a row, so keep the piece centered in the shot. If a tall piece gets cut off, add a square `thumbnail` with room around the whole piece; the piece's own page still uses the main photo.
 
 The homepage shows six pieces: the `featured` ones first, then the rest in `order`.
 

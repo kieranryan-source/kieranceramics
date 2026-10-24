@@ -5,6 +5,7 @@ process: Wheel-thrown stoneware, speckled blue glaze
 categories: [standard-glazes]
 image: ../../assets/photos/blue-mug.jpg
 imageAlt: A straight-sided mug with a slight flare, in a speckled deep blue glaze with a pulled handle
+thumbnail: ../../assets/photos/blue-mug-square.jpg
 morePhotos:
   - image: ../../assets/photos/blue-mug-base.jpg
     alt: The mug on its side, showing the stamped base and the bare clay foot ring below the glaze

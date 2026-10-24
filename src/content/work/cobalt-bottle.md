@@ -5,6 +5,7 @@ process: Crystalline glaze, cobalt
 categories: [crystalline]
 image: ../../assets/photos/cobalt-bottle-front.jpg
 imageAlt: A tall bottle covered in bright cobalt blue crystals
+thumbnail: ../../assets/photos/cobalt-bottle-square.jpg
 morePhotos:
   - image: ../../assets/photos/cobalt-bottle-neck-shoulder.jpg
     alt: The neck and shoulder, darker purple crystals ringing the shoulder and paler blue ones on the neck

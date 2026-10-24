@@ -16,6 +16,7 @@ const work = defineCollection({
       dimensions: z.string().optional(),         // e.g. "21 x 12 cm"
       image: image().optional(),                 // put the photo next to the .md file
       imageAlt: z.string().optional(),
+      thumbnail: image().optional(),             // a square version for the gallery tiles, when the main photo crops badly
       aspect: z.string().optional(),            // e.g. '4 / 5'. Crops the photo; leave out to use the photo's own shape
       // More photos for the piece's own page, shown under the main one (other angles, details, the inside)
       morePhotos: z

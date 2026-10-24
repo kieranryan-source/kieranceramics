@@ -5,6 +5,7 @@ process: Pierced stoneware, blue rutile glaze
 categories: [standard-glazes]
 image: ../../assets/photos/rutile-pierced-bowl-side.jpg
 imageAlt: A footed stoneware bowl in a mottled blue rutile glaze, pierced with irregular openings
+thumbnail: ../../assets/photos/rutile-pierced-bowl-square.jpg
 morePhotos:
   - image: ../../assets/photos/rutile-pierced-bowl-top.jpg
     alt: The bowl seen from directly above, a ring of openings around a solid blue center

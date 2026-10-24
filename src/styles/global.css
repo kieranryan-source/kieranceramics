@@ -371,7 +371,9 @@ a.list-row:hover { color: var(--muted); }
   align-items: start;
   padding-top: clamp(1.25rem, 1rem + 1.5vw, 2.5rem);
 }
-.piece-photo .media { max-height: calc(100svh - 3rem); }
+.piece-photos { display: grid; gap: var(--tile-gap); }
+/* Each photo fits on screen: tall photos are shown whole rather than cropped */
+.piece-photos .media { width: min(100%, calc((100svh - 3rem) * var(--ratio, 1))); margin-inline: auto; }
 .piece-info { position: sticky; top: 2rem; }
 .piece-info .page-title { text-align: left; }
 .piece-info .price { display: block; margin-top: 0.75rem; font-size: var(--step-0); font-weight: var(--weight-regular); font-variant-numeric: tabular-nums; }

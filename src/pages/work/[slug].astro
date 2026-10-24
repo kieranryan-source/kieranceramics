@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { piece, prev, next } = Astro.props;
-const { title, year, process, dimensions, image, imageAlt, aspect, shop } = piece.data;
+const { title, year, process, dimensions, image, imageAlt, aspect, morePhotos, shop } = piece.data;
 const { Content } = await render(piece);
 
 const availability = !shop ? null : shop.status === 'sold' ? 'Sold' : 'Available';
@@ -28,8 +28,11 @@ const availability = !shop ? null : shop.status === 'sold' ? 'Sold' : 'Available
     </nav>
 
     <div class="piece">
-      <div class="piece-photo">
+      <div class="piece-photos">
         <Media image={image} alt={imageAlt ?? title} aspect={aspect} sizes="(max-width: 860px) 100vw, 58vw" eager />
+        {morePhotos.map((p, i) => (
+          <Media image={p.image} alt={p.alt ?? `${title}, photo ${i + 2}`} sizes="(max-width: 860px) 100vw, 58vw" />
+        ))}
       </div>
 
       <div class="piece-info">

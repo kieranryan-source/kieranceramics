@@ -17,6 +17,10 @@ process: Crystalline glaze on porcelain
 dimensions: 21 x 12 cm
 image: ../../assets/photos/blue-vase.jpg
 imageAlt: Tall porcelain vase with pale blue crystals on a cobalt ground
+morePhotos:         # optional: more photos for the piece's own page, shown under the main one
+  - image: ../../assets/photos/blue-vase-detail.jpg
+    alt: Close-up of the crystals near the rim
+  - image: ../../assets/photos/blue-vase-back.jpg
 featured: true      # show on the homepage (the first four featured pieces appear)
 order: 1            # lower numbers come first
 shop:               # leave this whole block out unless it's for sale or already sold

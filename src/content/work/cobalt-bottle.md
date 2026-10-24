@@ -14,11 +14,6 @@ morePhotos:
     alt: The bottle on its side, crystals running all the way down to the bare clay foot
   - image: ../../assets/photos/cobalt-bottle-neck.jpg
     alt: The flared neck, a few separate crystals on plain blue glaze
-video:
-  src: /video/cobalt-bottle-kiln.mp4
-  webm: /video/cobalt-bottle-kiln.webm
-  poster: /video/cobalt-bottle-kiln.jpg
-  caption: The bottle just out of the kiln, still on its glaze catcher, turning in the sun
 order: 6
 shop:
   status: sold

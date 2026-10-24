@@ -24,6 +24,7 @@
   --weight-light: 300;                 /* only the tagline under the name */
   --weight-regular: 400;
   --weight-medium: 500;
+  --weight-bold: 600;                  /* small subheadings inside body text */
 
   --step--2: 0.75rem;                                   /* tags, small caps */
   --step--1: 0.8125rem;                                 /* nav, captions */

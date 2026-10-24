@@ -35,15 +35,15 @@ export const site = {
 
   location: 'East Hampton, New York',
 
-  // The menu, in order. Shown in lowercase.
+  // The menu, in order. Items marked footerOnly appear in the footer but not the top menu.
   nav: [
     { label: 'Work', href: '/work/' },
     { label: 'Shop', href: '/shop/' },
-    { label: 'Shop information', href: '/shop-information/' },
     { label: 'Commissions', href: '/commissions/' },
     { label: 'Workshops', href: '/workshops/' },
     { label: 'Exhibitions', href: '/exhibitions/' },
     { label: 'About', href: '/about/' },
     { label: 'Contact', href: '/contact/' },
+    { label: 'Shipping, care and returns', href: '/shop-information/', footerOnly: true },
   ],
 };

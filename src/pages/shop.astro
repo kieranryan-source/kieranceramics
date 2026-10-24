@@ -22,6 +22,9 @@ const listed = [...available, ...sold];
         </>
       )}
     </p>
+    <p class="muted" style="margin-top: 1rem; font-size: var(--step--1)">
+      <a class="link" href="/shop-information/">Shipping, care and returns</a>
+    </p>
   </section>
 
   {listed.length > 0 && (
@@ -31,8 +34,4 @@ const listed = [...available, ...sold];
       </div>
     </section>
   )}
-
-  <section class="section container narrow" style="text-align: center">
-    <a class="link" href="/shop-information/">Shipping, care and returns</a>
-  </section>
 </Base>

@@ -265,7 +265,7 @@ a.banner-inner:hover img { transform: scale(1.02); }
 .banner.plain .banner-text { color: var(--ink); }
 .banner.below .banner-inner { display: block; height: auto; overflow: visible; background: none; }
 .banner.below .banner-inner::after { content: none; }
-.banner.below img { position: static; height: clamp(16rem, 10rem + 20vw, 30rem); }
+.banner.below img { position: static; height: auto; aspect-ratio: 2 / 1; }
 .banner.below .banner-text { color: var(--ink); padding: 1.75rem var(--gutter) 0; margin-inline: auto; }
 .banner.below .banner-title { font-size: var(--step-2); }
 .banner.below .banner-subtitle { color: var(--muted); }

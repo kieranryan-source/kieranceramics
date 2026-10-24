@@ -76,4 +76,5 @@ The Cloudflare Worker `kieranceramics` is connected to this repo.
 
 - Build command: `npm run build`
 - Deploy command: `npx wrangler deploy` (reads `wrangler.jsonc`, which serves `dist/`)
+- Pull requests get a preview build, deployed with `npx wrangler preview`. That needs the `previews` block in `wrangler.jsonc`, so keep it there.
 - Node version comes from `.node-version`

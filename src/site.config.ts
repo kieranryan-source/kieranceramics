@@ -22,8 +22,8 @@ export const site = {
   // Put the photo in src/assets/photos/ and write its file name here, e.g. 'kieran.jpg'.
   // While this is empty, a grey "Portrait" placeholder shows in its place.
   portrait: {
-    image: '',
-    alt: 'Kieran Ryan in the studio',
+    image: 'kieran-portrait.jpg',
+    alt: 'Kieran Ryan smiling, standing on a sandy bluff above the ocean',
   },
 
   // Leave email empty to hide it everywhere. Add the address you want public.

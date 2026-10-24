@@ -1,9 +1,10 @@
 [
   {
-    "id": "parrish-art-museum",
-    "title": "Parrish Art Museum",
-    "place": "Water Mill, New York",
-    "when": "Draft: add the show's name and year",
+    "id": "parrish-holiday-market-2025",
+    "title": "Holiday Market",
+    "place": "Parrish Art Museum, Water Mill, New York",
+    "when": "2025",
+    "url": "https://parrishart.org/",
     "order": 1
   }
 ]

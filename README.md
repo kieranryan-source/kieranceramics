@@ -70,9 +70,25 @@ The font is Work Sans, used light throughout. It's free and served from the site
 
 Put the photo in `src/assets/photos/`, for example `kieran.jpg`, and set `portrait.image` in `src/site.config.ts` to `'kieran.jpg'`. It shows on the homepage and the About page, cropped to 4:5 (portrait shape). Until then a grey placeholder holds its place.
 
+## Exhibitions and press
+
+Shows and markets are in `src/data/exhibitions.json`, newest first by `order`. Press goes in `src/data/press.json`; the Press section on the Exhibitions page appears once there's at least one entry:
+
+```json
+[
+  {
+    "title": "Growing crystals in East Hampton",
+    "publication": "The East Hampton Star",
+    "when": "March 2027",
+    "url": "https://...",
+    "order": 1
+  }
+]
+```
+
 ## Drafts to finish
 
-Some pages have grey italic "Draft:" notes where only you know the answer: timing and price on Commissions, the show details and press on Exhibitions, and the Mudita class description in `src/data/workshops.json`. Search the code for `Draft:` to find them all.
+Some pages have grey italic "Draft:" notes where only you know the answer: timing and price on Commissions, and the Mudita class description in `src/data/workshops.json`. Search the code for `Draft:` to find them all.
 
 When shipping opens again, update the Shipping section in `src/pages/shop-information.astro`.
 

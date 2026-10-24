@@ -6,6 +6,9 @@
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+/* Never let anything push the page wider than the screen (no sideways scrolling on phones).
+   clip, unlike hidden, keeps the sticky details column on piece pages working. */
+html, body { overflow-x: clip; }
 img, svg, video { display: block; max-width: 100%; height: auto; }
 button { font: inherit; color: inherit; }
 a { color: inherit; text-decoration: none; }

@@ -2,12 +2,14 @@
 import Base from '../layouts/Base.astro';
 import Banner from '../components/Banner.astro';
 import nickel from '../assets/photos/nickel-series.jpg';
+import nickelWide from '../assets/photos/nickel-series-wide.jpg';
 ---
 
 <Base title="Commissions" description="Commissioned crystalline ceramics by Kieran Ryan: colors, sets and pieces made to order." image={nickel}>
   <Banner
-    image={nickel}
-    focus="50% 55%"
+    below
+    image={nickelWide}
+    focus="50% 50%"
     alt="A crystalline bottle and two cups with blue crystals on a golden ground"
     title="Commissions"
   />

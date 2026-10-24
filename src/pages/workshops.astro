@@ -31,6 +31,11 @@ const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order
           <span class="secondary">
             {w.data.hostUrl ? <a class="link" href={w.data.hostUrl} target="_blank" rel="noopener">{w.data.host}</a> : w.data.host}
           </span>
+          {w.data.hostInstagram && (
+            <span class="tertiary">
+              <a class="link" href={w.data.hostInstagram.url} target="_blank" rel="noopener">{w.data.hostInstagram.handle}</a> on Instagram
+            </span>
+          )}
           <span class="tertiary">{w.data.summary}</span>
           <span class="tertiary">{w.data.schedule}</span>
         </div>

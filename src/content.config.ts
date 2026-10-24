@@ -41,7 +41,10 @@ const workshops = defineCollection({
   schema: z.object({
     title: z.string(),
     host: z.string(),
-    hostUrl: z.url().optional(),
+    hostUrl: z.url().optional(),               // the host's website
+    hostInstagram: z
+      .object({ handle: z.string(), url: z.url() })
+      .optional(),
     summary: z.string(),
     schedule: z.string(),
     order: z.number().default(100),

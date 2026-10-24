@@ -72,7 +72,9 @@ Put the photo in `src/assets/photos/`, for example `kieran.jpg`, and set `portra
 
 ## Drafts to finish
 
-Some pages have grey italic "Draft:" notes where only you know the answer: shipping, care and returns on Shop information, timing and price on Commissions, and the show details and press on Exhibitions. Search the code for `Draft:` to find them all.
+Some pages have grey italic "Draft:" notes where only you know the answer: timing and price on Commissions, the show details and press on Exhibitions, and the Mudita class description in `src/data/workshops.json`. Search the code for `Draft:` to find them all.
+
+When shipping opens again, update the Shipping section in `src/pages/shop-information.astro`.
 
 ## Work on it locally
 

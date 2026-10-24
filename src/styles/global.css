@@ -371,9 +371,21 @@ a.list-row:hover { color: var(--muted); }
   align-items: start;
   padding-top: clamp(1.25rem, 1rem + 1.5vw, 2.5rem);
 }
-.piece-photos { display: grid; gap: var(--tile-gap); }
-/* Each photo fits on screen: tall photos are shown whole rather than cropped */
-.piece-photos .media { width: min(100%, calc((100svh - 3rem) * var(--ratio, 1))); margin-inline: auto; }
+/* The main photo fits on screen: tall photos are shown whole rather than cropped */
+.piece-photo .media { width: min(100%, calc((100svh - 3rem) * var(--ratio, 1))); margin-inline: auto; }
+
+/* Extra photos under the piece, across the full width: large ones and pairs */
+.detail-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--tile-gap);
+  margin-top: clamp(1rem, 0.5rem + 1.5vw, 2rem);
+}
+.detail.wide { grid-column: 1 / -1; }
+.detail.wide .media { max-height: 85svh; }
+@media (max-width: 760px) {
+  .detail-photos { grid-template-columns: 1fr; }
+}
 .piece-info { position: sticky; top: 2rem; }
 .piece-info .page-title { text-align: left; }
 .piece-info .price { display: block; margin-top: 0.75rem; font-size: var(--step-0); font-weight: var(--weight-regular); font-variant-numeric: tabular-nums; }

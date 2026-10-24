@@ -1,4 +1,5 @@
 ---
+import '@fontsource-variable/work-sans/wght.css';
 import '../styles/theme.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
@@ -37,9 +38,6 @@ const shareUrl = new URL(share.src, site.url);
     <meta property="og:image" content={shareUrl} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="preconnect" href="https://api.fontshare.com" />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
-    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -48,6 +46,5 @@ const shareUrl = new URL(share.src, site.url);
       <slot />
     </main>
     <Footer />
-    <script src="../scripts/motion.ts"></script>
   </body>
 </html>

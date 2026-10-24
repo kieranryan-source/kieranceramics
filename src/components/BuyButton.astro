@@ -17,14 +17,16 @@ const price = shop?.price != null
 ---
 
 {shop && (
-  <div class="buy-row">
-    <span class="price">{shop.status === 'sold' ? '' : price}</span>
-    {shop.status === 'sold' ? (
-      <span class="button" aria-disabled="true">Sold</span>
-    ) : shop.paymentLink ? (
-      <a class="button" href={shop.paymentLink}>Buy</a>
-    ) : (
-      <a class="button quiet" href={`/contact/?piece=${encodeURIComponent(piece.data.title)}`}>Ask about this piece</a>
-    )}
-  </div>
+  <>
+    {shop.status === 'available' && <span class="price">{price}</span>}
+    <div class="buy">
+      {shop.status === 'sold' ? (
+        <span class="button" aria-disabled="true">Sold</span>
+      ) : shop.paymentLink ? (
+        <a class="button" href={shop.paymentLink}>Buy</a>
+      ) : (
+        <a class="button quiet" href={`/contact/?piece=${encodeURIComponent(piece.data.title)}`}>Ask about this piece</a>
+      )}
+    </div>
+  </>
 )}

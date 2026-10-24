@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site.config';
+---
+
+<Base title="Shop information" description="How the shop works: buying one-of-a-kind pieces, shipping, care and returns.">
+  <section class="container page-head narrow">
+    <h1 class="page-title">Shop information</h1>
+  </section>
+
+  <section class="section container narrow" aria-label="Shop information">
+    <div class="prose">
+      <h2>How the shop works</h2>
+      <p>
+        Every piece is one of a kind. Once it sells, it's gone. New work goes up on
+        <a href={site.instagram.url} target="_blank" rel="noopener">Instagram</a> first, then in the
+        <a href="/shop/">shop</a>.
+      </p>
+      <p>
+        Pieces with a Buy button can be bought straight away. Checkout is handled securely by Stripe.
+        For anything marked "Ask about this piece", <a href="/contact/">get in touch</a> and I'll
+        reply with a price and shipping.
+      </p>
+
+      <h2>Shipping</h2>
+      <p class="draft">
+        Draft: say where you ship, how long it takes, what it costs, and how pieces are packed.
+      </p>
+
+      <h2>Care</h2>
+      <p class="draft">
+        Draft: for example, hand washing only, and that crystalline surfaces are decorative unless a
+        piece's listing says its inside is lined with a food-safe glaze. Check this matches your glazes.
+      </p>
+
+      <h2>Returns</h2>
+      <p class="draft">
+        Draft: say whether you accept returns, and what happens if a piece arrives damaged.
+      </p>
+
+      <h2>Questions</h2>
+      <p>Anything else, <a href="/contact/">get in touch</a>.</p>
+    </div>
+  </section>
+</Base>

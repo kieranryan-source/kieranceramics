@@ -3,11 +3,9 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="Page not found">
-  <section class="container grid piece-head">
-    <h1 class="heading">This page doesn't exist</h1>
-    <p class="intro" style="grid-column: 5 / -1">
-      It may have moved, or the piece may have been taken down.
-      <br /><a class="link" href="/work/" style="margin-top: 1.5rem">See all work</a>
-    </p>
+  <section class="container page-head narrow">
+    <h1 class="page-title">This page doesn't exist</h1>
+    <p class="lead">It may have moved, or the piece may have been taken down.</p>
+    <p style="margin-top: 2rem"><a class="button quiet" href="/work/">See all work</a></p>
   </section>
 </Base>

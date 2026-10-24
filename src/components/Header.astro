@@ -6,28 +6,25 @@ const isCurrent = (href: string) => path === href || path.startsWith(href);
 ---
 
 <header class="site-header">
-  <div class="container">
-    <div class="grid bar">
-      <a class="home" href="/">{site.name}</a>
+  <div class="container bar">
+    <a class="wordmark" href="/" aria-label={`${site.name}, ${site.tagline}, home`}>
+      <span class="wordmark-name">{site.name}</span>
+      <span class="wordmark-tag">{site.tagline}</span>
+    </a>
 
-      <nav class="nav" aria-label="Main">
+    <nav class="nav" aria-label="Main">
+      {site.nav.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+
+    <details class="menu">
+      <summary><span class="open">Menu</span><span class="close">Close</span></summary>
+      <nav class="menu-panel" aria-label="Main">
         {site.nav.map((item) => (
           <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
         ))}
       </nav>
-
-      <div class="aside">
-        <a href={site.instagram.url} rel="me noopener" target="_blank">Instagram</a>
-        <a class="contact" href="/contact/" aria-current={isCurrent('/contact/') ? 'page' : undefined}>Contact</a>
-      </div>
-
-      <details class="menu">
-        <summary><span class="open">Menu</span><span class="close">Close</span></summary>
-        <nav class="menu-panel" aria-label="Main">
-          {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
-          <a href="/contact/">Contact</a>
-        </nav>
-      </details>
-    </div>
+    </details>
   </div>
 </header>

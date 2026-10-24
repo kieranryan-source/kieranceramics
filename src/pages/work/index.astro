@@ -1,38 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
-import { getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import WorkCard from '../../components/WorkCard.astro';
-import { slotAspect, slotSizes } from '../../lib/work-grid';
 
 const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
-
-// Small images for the pointer preview on the list
-const previews = await Promise.all(
-  work.map(async (p) => (p.data.image ? (await getImage({ src: p.data.image, width: 640 })).src : '')),
-);
 ---
 
 <Base title="Work" description="Crystalline-glazed porcelain and stoneware, pierced bowls and printed clay by Kieran Ryan.">
-  <section class="container piece-head grid">
-    <h1 class="heading">Everything from the kiln</h1>
+  <section class="container page-head">
+    <h1 class="page-title">Work</h1>
+    <p class="lead">Crystalline glazes, pierced porcelain, printed clay and slip casting.</p>
   </section>
 
   <section class="section container" aria-label="All pieces">
-    <div class="index">
-      {work.map((piece, i) => (
-        <a class="index-row" href={`/work/${piece.id}/`} data-preview={previews[i] || undefined}>
-          <span class="primary">{piece.data.title}</span>
-          <span class="secondary">{piece.data.process}</span>
-          <span class="tertiary">{piece.data.year}</span>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <section class="section container" aria-label="Gallery">
-    <div class="grid work-grid">
-      {work.map((piece, i) => <WorkCard piece={piece} aspect={slotAspect(i)} sizes={slotSizes(i)} />)}
+    <div class="gallery">
+      {work.map((piece, i) => <WorkCard piece={piece} eager={i < 3} />)}
     </div>
   </section>
 </Base>

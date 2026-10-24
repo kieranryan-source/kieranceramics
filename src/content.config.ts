@@ -15,6 +15,15 @@ const work = defineCollection({
       image: image().optional(),                 // put the photo next to the .md file
       imageAlt: z.string().optional(),
       aspect: z.string().optional(),            // e.g. '4 / 5'. Crops the photo; leave out to use the photo's own shape
+      // More photos for the piece's own page, shown under the main one (other angles, details, the inside)
+      morePhotos: z
+        .array(
+          z.object({
+            image: image(),
+            alt: z.string().optional(),
+          }),
+        )
+        .default([]),
       featured: z.boolean().default(false),      // show on the homepage
       order: z.number().default(100),            // lower numbers come first
       shop: z
@@ -39,4 +48,16 @@ const workshops = defineCollection({
   }),
 });
 
-export const collections = { work, workshops };
+// One entry per show in src/data/exhibitions.json, newest first by `order`.
+const exhibitions = defineCollection({
+  loader: file('./src/data/exhibitions.json'),
+  schema: z.object({
+    title: z.string(),                         // the show, or the venue if the show had no name
+    place: z.string(),                         // venue and town
+    when: z.string(),                          // e.g. "2025" or "June to August 2025"
+    url: z.url().optional(),
+    order: z.number().default(100),
+  }),
+});
+
+export const collections = { work, workshops, exhibitions };

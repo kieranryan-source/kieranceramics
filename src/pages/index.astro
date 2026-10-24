@@ -1,104 +1,74 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
 import Media from '../components/Media.astro';
 import WorkCard from '../components/WorkCard.astro';
 import { site } from '../site.config';
-import { slotAspect, slotSizes } from '../lib/work-grid';
+import { photo } from '../lib/photos';
+import tiles from '../assets/photos/workshop-tiles.jpg';
 
 const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
-const featured = work.filter((p) => p.data.featured).slice(0, 4);
-const heroPiece = work.find((p) => p.id === site.heroPiece) ?? featured[0];
-const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order - b.data.order);
+// Six tiles fill two rows of the gallery: featured pieces first, then the rest in order
+const selected = [...work.filter((p) => p.data.featured), ...work.filter((p) => !p.data.featured)].slice(0, 6);
+const heroImage = photo(site.hero.image);
+const portrait = photo(site.portrait.image, true);
 ---
 
-<Base>
-  <section class="hero container" aria-labelledby="name">
-    <div class="grid">
-      <p class="intro">
-        I make porcelain and stoneware, most of it finished in crystalline glaze. The crystals grow
-        in the kiln on their own terms, so every piece is the only one of its kind.
-      </p>
+<Base image={heroImage}>
+  <Banner
+    tall
+    image={heroImage}
+    alt={site.hero.alt}
+    title={site.hero.title}
+    subtitle={site.hero.subtitle}
+    button={site.hero.button}
+  />
 
-      <h1 class="name display rise" id="name">
-        <span class="line"><span>Kieran</span></span>
-        <span class="line"><span>Ryan</span></span>
-      </h1>
-
-      <a class="figure" href={heroPiece ? `/work/${heroPiece.id}/` : '/work/'}>
-        <Media
-          image={heroPiece?.data.image}
-          alt={heroPiece?.data.imageAlt ?? heroPiece?.data.title}
-          aspect="4 / 5"
-          sizes="(max-width: 560px) 100vw, (max-width: 960px) 75vw, 30vw"
-          eager
-        />
+  <section class="section container" aria-label="About me">
+    <div class="intro-split">
+      <a class="portrait" href="/about/">
+        <Media image={portrait} alt={site.portrait.alt} aspect="4 / 5" label="Portrait" sizes="(max-width: 760px) 22rem, 30vw" />
       </a>
-
-      <dl class="facts">
-        <div>
-          <dt>Practice</dt>
-          <dd>Crystalline glazes<br />Pierced porcelain<br />Clay printing<br />Slip casting</dd>
-        </div>
-        <div>
-          <dt>Based in</dt>
-          <dd>{site.location}</dd>
-        </div>
-        <div>
-          <dt>Teaching</dt>
-          <dd><span class="status-dot" aria-hidden="true"></span>Crystalline workshops</dd>
-        </div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="section container" aria-label="About">
-    <div class="grid split">
-      <div class="content">
-        <p class="statement" data-fill>
-          Each glaze starts as chemistry I mix by hand: zinc, silica and a few colorants. The firing
-          does the rest, growing crystals across the surface over hours of slow cooling. I can steer
-          it, but I can't repeat it. What you take home happened once.
+      <div>
+        <p class="lead">
+          I'm Kieran, a ceramic artist in East Hampton. Each glaze starts as chemistry I mix by hand:
+          zinc, silica and a few colorants. The firing does the rest, growing crystals across the
+          surface over hours of slow cooling. I can steer it, but I can't repeat it, so every piece
+          is the only one of its kind.
         </p>
-        <p style="margin-top: 2rem"><a class="link" href="/about/">More about the work</a></p>
+        <a class="link" href="/about/">More about me and the process</a>
       </div>
     </div>
   </section>
 
   <section class="section container" aria-labelledby="work-heading">
-    <div class="grid section-head">
-      <h2 class="heading" id="work-heading">From the kiln</h2>
-      <a class="more link" href="/work/">All work ({work.length})</a>
+    <div class="section-head">
+      <h2 class="page-title" id="work-heading">Selected work</h2>
+      <a class="link" href="/work/">See all {work.length} pieces</a>
     </div>
-    <div class="grid work-grid">
-      {featured.map((piece, i) => (
-        <WorkCard piece={piece} aspect={slotAspect(i)} sizes={slotSizes(i)} />
-      ))}
+    <div class="gallery">
+      {selected.map((piece) => <WorkCard piece={piece} />)}
     </div>
   </section>
 
-  <section class="section container" aria-labelledby="workshops-heading">
-    <div class="grid section-head">
-      <h2 class="heading" id="workshops-heading">Learn to grow crystals</h2>
-      <a class="more link" href="/workshops/">Workshop details</a>
-    </div>
-    <div class="index">
-      {workshops.map((w) => (
-        <a class="index-row" href="/workshops/">
-          <span class="primary">{w.data.title}</span>
-          <span class="secondary">{w.data.host}</span>
-          <span class="tertiary">{w.data.schedule}</span>
-        </a>
-      ))}
-    </div>
-  </section>
+  <div class="section">
+    <Banner
+      heading="h2"
+      href="/workshops/"
+      image={tiles}
+      focus="50% 62%"
+      alt="Three crystalline test pieces on glaze catchers, in teal, cobalt blue and mauve"
+      title="Crystalline glaze workshops"
+      subtitle="Learn to mix, apply and fire glazes that grow their own crystals"
+    />
+  </div>
 
-  <section class="section container cta" aria-labelledby="cta-heading">
-    <div class="grid split">
-      <div class="content">
-        <h2 class="heading" id="cta-heading">Looking for a piece, or a commission?</h2>
-        <a class="link" href="/contact/">Get in touch</a>
-      </div>
-    </div>
+  <section class="section container narrow" aria-labelledby="cta-heading" style="text-align: center">
+    <h2 class="page-title" id="cta-heading">Commissions</h2>
+    <p class="lead muted" style="margin-top: 1rem">
+      Looking for a particular color, a set made to order, or a piece for a gift?
+    </p>
+    <p style="margin-top: 2rem"><a class="button quiet" href="/commissions/">How commissions work</a></p>
   </section>
 </Base>

@@ -1,0 +1,40 @@
+---
+// A photo inside the page margins with a title centered on it, darkened just enough for white text to read.
+// Used for the homepage hero and the tops of section pages.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image: ImageMetadata;
+  alt: string;
+  title: string;
+  subtitle?: string;
+  button?: { label: string; href: string };
+  tall?: boolean;      // the homepage hero fills most of the screen; section banners are shorter
+  heading?: 'h1' | 'h2';
+  href?: string;       // makes the whole banner a link (when there's no button)
+  focus?: string;      // which part of the photo to keep when it's cropped, e.g. '50% 80%' keeps the lower part
+}
+
+const { image, alt, title, subtitle, button, tall = false, heading = 'h1', href, focus } = Astro.props;
+const Heading = heading;
+const Wrap = href ? 'a' : 'div';
+---
+
+<section class:list={['banner', 'container', { tall }]} aria-label={title}>
+  <Wrap class="banner-inner" href={href} style={focus ? `--focus: ${focus}` : undefined}>
+    <Image
+      src={image}
+      alt={alt}
+      widths={[800, 1200, 1800, 2400]}
+      sizes="(max-width: 1536px) 100vw, 1440px"
+      loading={heading === 'h1' ? 'eager' : 'lazy'}
+      fetchpriority={heading === 'h1' ? 'high' : undefined}
+    />
+    <div class="banner-text">
+      <Heading class="banner-title">{title}</Heading>
+      {subtitle && <p class="banner-subtitle">{subtitle}</p>}
+      {button && <a class="button" href={button.href}>{button.label}</a>}
+    </div>
+  </Wrap>
+</section>

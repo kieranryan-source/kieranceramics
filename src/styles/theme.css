@@ -4,51 +4,49 @@
   Every color, font, size and spacing value the site uses is defined here
   as a CSS custom property. Components never hard-code these values.
 
-  Current theme: "Porcelain" (white page, graphite ink, cobalt accent).
-  To try a new theme, duplicate this file, change the values, and point
-  src/layouts/Base.astro at the new file.
+  Current theme: "Studio" (white walls, near-black ink, one light sans serif,
+  widely spaced capitals for the name). The photos carry the color.
 */
 
 :root {
   /* Color */
   --paper: oklch(1 0 0);               /* page background */
-  --ink: oklch(0.2 0.012 262);         /* main text, graphite with a hint of blue */
-  --muted: oklch(0.55 0.01 262);       /* labels, captions, secondary text */
-  --faint: oklch(0.72 0.008 262);      /* unfilled words in scroll statements */
-  --rule: oklch(0.9 0.004 262);        /* thin dividers */
-  --wash: oklch(0.955 0.006 262);      /* image placeholders, subtle fills */
-  --accent: oklch(0.47 0.17 262);      /* cobalt, from the glaze palette */
-  --accent-ink: oklch(1 0 0);          /* text on top of the accent */
+  --ink: oklch(0.19 0 0);              /* main text, buttons */
+  --muted: oklch(0.5 0 0);             /* captions, secondary text */
+  --faint: oklch(0.7 0 0);             /* current nav item, quiet details */
+  --rule: oklch(0.91 0 0);             /* thin dividers */
+  --wash: oklch(0.965 0 0);            /* image placeholders, subtle fills */
+  --scrim: oklch(0 0 0 / 0.26);        /* darkens banner photos so white text reads */
+  --on-photo: oklch(1 0 0);            /* text on top of a banner photo */
 
-  /* Type */
-  --font-sans: "Switzer", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  /* Type: one family, Work Sans, used light */
+  --font-sans: "Work Sans Variable", "Work Sans", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --weight-light: 300;
   --weight-regular: 400;
   --weight-medium: 500;
 
-  --step--1: 0.875rem;                                  /* labels, captions */
+  --step--2: 0.75rem;                                   /* tags, small caps */
+  --step--1: 0.8125rem;                                 /* nav, captions */
   --step-0: 1rem;                                       /* body */
-  --step-1: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);    /* intro text */
-  --step-2: clamp(1.75rem, 1.2rem + 2vw, 3rem);         /* statements */
-  --step-3: clamp(2.5rem, 1.4rem + 4.6vw, 6rem);        /* section headings */
-  --step-display: min(13rem, 14.5vw);                   /* the name in the hero */
+  --step-1: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);  /* lead paragraphs */
+  --step-2: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);        /* page titles */
+  --step-3: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);        /* banner titles */
 
-  --leading-tight: 0.86;
-  --leading-heading: 0.98;
-  --leading-statement: 1.12;
-  --leading-body: 1.55;
+  --leading-heading: 1.2;
+  --leading-body: 1.7;
 
-  --tracking-display: -0.06em;
-  --tracking-heading: -0.045em;
-  --tracking-statement: -0.03em;
+  --tracking-name: 0.32em;             /* KIERAN RYAN in the header */
+  --tracking-caps: 0.16em;             /* small uppercase labels and buttons */
+  --tracking-nav: 0.12em;              /* lowercase nav links */
+  --tracking-title: 0.02em;
 
   /* Layout */
-  --max: 1360px;
-  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
-  --col-gap: clamp(0.75rem, 0.5rem + 1vw, 1.25rem);
-  --section: clamp(5rem, 3rem + 8vw, 11rem);   /* space between page sections */
-  --header-h: 4rem;
+  --max: 1440px;
+  --narrow: 38rem;                     /* text columns */
+  --gutter: clamp(1rem, 0.4rem + 2.6vw, 3rem);
+  --tile-gap: 6px;                     /* the hairline gap between gallery photos */
+  --section: clamp(4rem, 2.75rem + 5vw, 8rem);   /* space between page sections */
 
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur-rise: 1100ms;
 }

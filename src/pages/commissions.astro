@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
+import nickel from '../assets/photos/nickel-series.jpg';
+---
+
+<Base title="Commissions" description="Commissioned crystalline ceramics by Kieran Ryan: colors, sets and pieces made to order." image={nickel}>
+  <Banner
+    image={nickel}
+    focus="50% 55%"
+    alt="A crystalline bottle and two cups with blue crystals on a golden ground"
+    title="Commissions"
+  />
+
+  <section class="section container narrow" aria-label="About commissions">
+    <p class="lead">
+      If you've seen a glaze you love, or need a set or a gift made to order, I'm happy to talk it
+      through. Crystals grow on their own terms, so every commission is a collaboration with the kiln
+      as much as with me.
+    </p>
+  </section>
+
+  <section class="section container narrow" aria-label="How commissions work">
+    <div class="prose">
+      <h2>What I can make</h2>
+      <ul>
+        <li>A piece in a glaze or color from my past work</li>
+        <li>Matching sets, like a bottle with cups, or a set of bowls</li>
+        <li>Hand-pierced bowls and platters</li>
+        <li>Pieces for gifts, weddings and other occasions</li>
+      </ul>
+
+      <h2>How it works</h2>
+      <p>
+        Get in touch with what you have in mind, and photos of any pieces you like. We agree on the
+        form, the glaze, the size and a price. I make and fire the piece, and send you photos before
+        it ships.
+      </p>
+      <p>
+        Crystalline firings don't always go to plan. Sometimes a piece takes more than one firing to
+        come out right, and no two crystals land the same way twice. I'll send you photos of the
+        finished piece so you know exactly what you're getting.
+      </p>
+
+      <h2>Timing and price</h2>
+      <p class="draft">
+        Draft: say how far ahead people should ask, a typical price range, and whether you take a
+        deposit.
+      </p>
+    </div>
+    <p style="margin-top: 3rem; text-align: center">
+      <a class="button" href="/contact/?piece=A%20commission">Start a commission</a>
+    </p>
+  </section>
+</Base>

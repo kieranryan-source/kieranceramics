@@ -7,6 +7,9 @@ import formPhoto from '../assets/photos/process-form.jpg';
 import glazePhoto from '../assets/photos/process-glaze.jpg';
 import firePhoto from '../assets/photos/process-fire.jpg';
 import { site } from '../site.config';
+import { photo } from '../lib/photos';
+
+const portrait = photo(site.portrait.image, true);
 
 const steps = [
   {
@@ -35,6 +38,12 @@ const steps = [
     <h1 class="page-title">Glaze chemistry, slow cooling, and a little luck</h1>
   </section>
 
+  <div class="section container">
+    <div class="portrait-solo">
+      <Media image={portrait} alt={site.portrait.alt} aspect="4 / 5" label="Portrait" sizes="(max-width: 480px) 100vw, 26rem" eager />
+    </div>
+  </div>
+
   <section class="section container narrow" aria-label="Bio">
     <div class="prose">
       <p>
@@ -46,7 +55,7 @@ const steps = [
       <p>
         I also pierce bowls and platters by hand, slip cast, and 3D print in clay. I teach
         crystalline glaze workshops at the Clay Art Guild of the Hamptons and classes at Mudita
-        Ceramics School. My work has been shown at the Parrish Art Museum.
+        Ceramics School. My work has been shown at the <a href="/exhibitions/">Parrish Art Museum</a>.
       </p>
     </div>
   </section>

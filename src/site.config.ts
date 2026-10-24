@@ -18,6 +18,14 @@ export const site = {
     button: { label: 'View the work', href: '/work/' },
   },
 
+  // Your portrait, shown on the homepage and the About page.
+  // Put the photo in src/assets/photos/ and write its file name here, e.g. 'kieran.jpg'.
+  // While this is empty, a grey "Portrait" placeholder shows in its place.
+  portrait: {
+    image: '',
+    alt: 'Kieran Ryan in the studio',
+  },
+
   // Leave email empty to hide it everywhere. Add the address you want public.
   email: '',
   instagram: {
@@ -27,10 +35,14 @@ export const site = {
 
   location: 'East Hampton, New York',
 
+  // The menu, in order. Shown in lowercase.
   nav: [
     { label: 'Work', href: '/work/' },
     { label: 'Shop', href: '/shop/' },
+    { label: 'Shop information', href: '/shop-information/' },
+    { label: 'Commissions', href: '/commissions/' },
     { label: 'Workshops', href: '/workshops/' },
+    { label: 'Exhibitions', href: '/exhibitions/' },
     { label: 'About', href: '/about/' },
     { label: 'Contact', href: '/contact/' },
   ],

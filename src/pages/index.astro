@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Banner from '../components/Banner.astro';
+import Media from '../components/Media.astro';
 import WorkCard from '../components/WorkCard.astro';
 import { site } from '../site.config';
 import { photo } from '../lib/photos';
@@ -11,6 +12,7 @@ const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.
 // Six tiles fill two rows of the gallery: featured pieces first, then the rest in order
 const selected = [...work.filter((p) => p.data.featured), ...work.filter((p) => !p.data.featured)].slice(0, 6);
 const heroImage = photo(site.hero.image);
+const portrait = photo(site.portrait.image, true);
 ---
 
 <Base image={heroImage}>
@@ -23,12 +25,21 @@ const heroImage = photo(site.hero.image);
     button={site.hero.button}
   />
 
-  <section class="section container narrow" aria-label="About the work">
-    <p class="lead">
-      Each glaze starts as chemistry I mix by hand: zinc, silica and a few colorants. The firing
-      does the rest, growing crystals across the surface over hours of slow cooling. I can steer
-      it, but I can't repeat it, so every piece is the only one of its kind.
-    </p>
+  <section class="section container" aria-label="About me">
+    <div class="intro-split">
+      <a class="portrait" href="/about/">
+        <Media image={portrait} alt={site.portrait.alt} aspect="4 / 5" label="Portrait" sizes="(max-width: 760px) 22rem, 30vw" />
+      </a>
+      <div>
+        <p class="lead">
+          I'm Kieran, a ceramic artist in East Hampton. Each glaze starts as chemistry I mix by hand:
+          zinc, silica and a few colorants. The firing does the rest, growing crystals across the
+          surface over hours of slow cooling. I can steer it, but I can't repeat it, so every piece
+          is the only one of its kind.
+        </p>
+        <a class="link" href="/about/">More about me and the process</a>
+      </div>
+    </div>
   </section>
 
   <section class="section container" aria-labelledby="work-heading">
@@ -54,10 +65,10 @@ const heroImage = photo(site.hero.image);
   </div>
 
   <section class="section container narrow" aria-labelledby="cta-heading" style="text-align: center">
-    <h2 class="page-title" id="cta-heading">Commissions and enquiries</h2>
-    <p class="lead muted" style="margin-top: 1.25rem">
-      Looking for a particular piece, a color, or a set made to order?
+    <h2 class="page-title" id="cta-heading">Commissions</h2>
+    <p class="lead muted" style="margin-top: 1rem">
+      Looking for a particular color, a set made to order, or a piece for a gift?
     </p>
-    <p style="margin-top: 2rem"><a class="button quiet" href="/contact/">Get in touch</a></p>
+    <p style="margin-top: 2rem"><a class="button quiet" href="/commissions/">How commissions work</a></p>
   </section>
 </Base>

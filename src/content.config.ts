@@ -39,4 +39,16 @@ const workshops = defineCollection({
   }),
 });
 
-export const collections = { work, workshops };
+// One entry per show in src/data/exhibitions.json, newest first by `order`.
+const exhibitions = defineCollection({
+  loader: file('./src/data/exhibitions.json'),
+  schema: z.object({
+    title: z.string(),                         // the show, or the venue if the show had no name
+    place: z.string(),                         // venue and town
+    when: z.string(),                          // e.g. "2025" or "June to August 2025"
+    url: z.url().optional(),
+    order: z.number().default(100),
+  }),
+});
+
+export const collections = { work, workshops, exhibitions };

@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { site } from '../site.config';
+
+const exhibitions = (await getCollection('exhibitions')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title="Exhibitions" description={`Exhibitions of crystalline ceramics by Kieran Ryan, ${site.location}.`}>
+  <section class="container page-head narrow">
+    <h1 class="page-title">Exhibitions</h1>
+  </section>
+
+  <section class="section container narrow" aria-label="Exhibitions">
+    <div class="list">
+      {exhibitions.map((e) => {
+        const Row = e.data.url ? 'a' : 'div';
+        return (
+          <Row class="list-row" href={e.data.url} target={e.data.url ? '_blank' : undefined} rel={e.data.url ? 'noopener' : undefined}>
+            <span class="primary">{e.data.title}</span>
+            <span class="secondary">{e.data.place}</span>
+            <span class="tertiary">{e.data.when}</span>
+          </Row>
+        );
+      })}
+    </div>
+  </section>
+
+  <section class="section container narrow" aria-labelledby="press-heading">
+    <div class="prose" style="text-align: center">
+      <h2 id="press-heading">Press</h2>
+      <p class="draft">Draft: list articles, interviews or features about your work here, or remove this section.</p>
+    </div>
+  </section>
+</Base>

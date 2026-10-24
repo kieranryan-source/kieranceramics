@@ -54,11 +54,19 @@ How the button behaves:
 
 All colors, fonts, sizes and spacing live in `src/styles/theme.css`. Change the values there and the whole site follows. Layout and components are in `src/styles/global.css` and only use those values.
 
-The fonts are Cormorant Garamond (the name, titles) and Work Sans (everything else). Both are free and served from the site itself, installed as npm packages and imported at the top of `src/layouts/Base.astro`.
+The font is Work Sans, used light throughout. It's free and served from the site itself, installed as an npm package and imported at the top of `src/layouts/Base.astro`.
 
 ## Change site details
 
-`src/site.config.ts` holds the name, the line under it in the header, the homepage photo, Instagram, public email (empty means hidden) and the nav. Workshops are in `src/data/workshops.json`.
+`src/site.config.ts` holds the name, the line under it in the header, the homepage photo, your portrait, Instagram, public email (empty means hidden) and the menu. Workshops are in `src/data/workshops.json` and exhibitions in `src/data/exhibitions.json`.
+
+## Add your portrait
+
+Put the photo in `src/assets/photos/`, for example `kieran.jpg`, and set `portrait.image` in `src/site.config.ts` to `'kieran.jpg'`. It shows on the homepage and the About page, cropped to 4:5 (portrait shape). Until then a grey placeholder holds its place.
+
+## Drafts to finish
+
+Some pages have grey italic "Draft:" notes where only you know the answer: shipping, care and returns on Shop information, timing and price on Commissions, and the show details and press on Exhibitions. Search the code for `Draft:` to find them all.
 
 ## Work on it locally
 

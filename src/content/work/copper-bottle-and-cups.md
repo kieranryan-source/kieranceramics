@@ -1,7 +1,7 @@
 ---
-title: Copper bottle vase and cups
+title: Teal bottle vase and cups
 year: 2025
-process: Crystalline glaze, copper
+process: Crystalline glaze, turquoise and sage
 categories: [crystalline]
 image: ../../assets/photos/copper-bottle-and-cups.jpg
 imageAlt: A small turquoise crystalline bottle vase with two matching cups

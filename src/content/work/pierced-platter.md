@@ -2,6 +2,7 @@
 title: Pierced platter
 year: 2026
 process: Pierced, glazed
+categories: [standard-glazes]
 image: ../../assets/photos/pierced-platter.jpg
 imageAlt: A large round platter in a pale gold glaze, pierced with a wide band of irregular openings
 morePhotos:

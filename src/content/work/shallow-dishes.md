@@ -2,6 +2,7 @@
 title: Two shallow dishes
 year: 2025
 process: Crystalline base glaze
+categories: [crystalline]
 image: ../../assets/photos/shallow-dishes.jpg
 imageAlt: Two shallow round dishes, one cobalt blue and one white, both covered in fine crystals
 order: 9

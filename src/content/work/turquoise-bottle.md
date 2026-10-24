@@ -2,6 +2,7 @@
 title: Turquoise crystalline bottle
 year: 2026
 process: Crystalline glaze, titanium
+categories: [crystalline]
 image: ../../assets/photos/turquoise-bottle.jpg
 imageAlt: A small bottle covered in turquoise and light teal crystals on a mottled tan and green field
 featured: true

@@ -1,0 +1,33 @@
+---
+// One page per kind of work, e.g. /work/category/crystalline/
+import Base from '../../../layouts/Base.astro';
+import WorkCard from '../../../components/WorkCard.astro';
+import CategoryNav from '../../../components/CategoryNav.astro';
+import { categories } from '../../../lib/categories';
+import { allWork, countByCategory } from '../../../lib/work';
+
+export async function getStaticPaths() {
+  const work = await allWork();
+  return categories
+    .filter((c) => work.some((p) => p.data.categories.includes(c.id)))
+    .map((category) => ({ params: { category: category.id }, props: { category } }));
+}
+
+const { category } = Astro.props;
+const work = await allWork();
+const pieces = work.filter((p) => p.data.categories.includes(category.id));
+---
+
+<Base title={`${category.label} work`} description={`${category.description} By Kieran Ryan.`}>
+  <section class="container page-head">
+    <h1 class="page-title">{category.label}</h1>
+    <p class="lead">{category.description}</p>
+    <CategoryNav current={category.id} counts={countByCategory(work)} />
+  </section>
+
+  <section class="section container" aria-label={`${category.label} pieces`}>
+    <div class="gallery">
+      {pieces.map((piece, i) => <WorkCard piece={piece} eager={i < 3} />)}
+    </div>
+  </section>
+</Base>

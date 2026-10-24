@@ -2,6 +2,7 @@
 title: Blue rutile pierced bowl
 year: 2025
 process: Pierced stoneware, blue rutile glaze
+categories: [standard-glazes]
 image: ../../assets/photos/rutile-pierced-bowl.jpg
 imageAlt: A footed stoneware bowl in a mottled blue rutile glaze, pierced with irregular openings
 morePhotos:

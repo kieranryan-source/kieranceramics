@@ -2,6 +2,7 @@
 title: Nickel bottle and cups
 year: 2025
 process: Crystalline glaze on stoneware, nickel
+categories: [crystalline]
 image: ../../assets/photos/nickel-series.jpg
 imageAlt: A crystalline bottle and two cups with blue and teal crystals on a tan field
 featured: true

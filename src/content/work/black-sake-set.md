@@ -2,6 +2,7 @@
 title: Black porcelain sake set
 year: 2025
 process: Black porcelain, clear glaze inside
+categories: [standard-glazes]
 image: ../../assets/photos/black-sake-set.jpg
 imageAlt: A ribbed black porcelain sake bottle with two matching cups
 order: 11

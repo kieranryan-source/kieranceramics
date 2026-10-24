@@ -2,6 +2,7 @@
 title: Copper bottle vase and cups
 year: 2025
 process: Crystalline glaze, copper
+categories: [crystalline]
 image: ../../assets/photos/copper-bottle-and-cups.jpg
 imageAlt: A small turquoise crystalline bottle vase with two matching cups
 featured: true

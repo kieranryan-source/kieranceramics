@@ -2,6 +2,7 @@
 title: Large-crystal bowl
 year: 2025
 process: Crystalline glaze on porcelain
+categories: [crystalline]
 image: ../../assets/photos/crystal-bowl.jpg
 imageAlt: A small porcelain bowl with large muted blue-green crystals on a warm brown and pink field
 order: 5

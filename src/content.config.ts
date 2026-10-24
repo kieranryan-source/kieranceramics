@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { categoryIds } from './lib/categories';
 
 // One Markdown file per piece in src/content/work/.
 // The file name becomes the URL: crystalline-vase.md -> /work/crystalline-vase/
@@ -11,6 +12,7 @@ const work = defineCollection({
       title: z.string(),
       year: z.number().int(),
       process: z.string(),                       // e.g. "Crystalline glaze on porcelain"
+      categories: z.array(z.enum(categoryIds)).min(1), // see src/lib/categories.ts, e.g. [crystalline]
       dimensions: z.string().optional(),         // e.g. "21 x 12 cm"
       image: image().optional(),                 // put the photo next to the .md file
       imageAlt: z.string().optional(),

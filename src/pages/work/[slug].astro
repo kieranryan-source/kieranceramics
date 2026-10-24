@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Media from '../../components/Media.astro';
 import BuyButton from '../../components/BuyButton.astro';
+import { categories, categoryHref } from '../../lib/categories';
 
 export async function getStaticPaths() {
   const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
@@ -14,6 +15,7 @@ export async function getStaticPaths() {
 
 const { piece, prev, next } = Astro.props;
 const { title, year, process, dimensions, image, imageAlt, aspect, morePhotos, shop } = piece.data;
+const pieceCategories = categories.filter((c) => piece.data.categories.includes(c.id));
 const { Content } = await render(piece);
 
 const availability = !shop ? null : shop.status === 'sold' ? 'Sold' : 'Available';
@@ -27,6 +29,8 @@ const isWide = (i: number) => i === 0 || (i === morePhotos.length - 1 && i % 2 =
   <article class="container">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/work/">Work</a>
+      <span aria-hidden="true">/</span>
+      <a href={categoryHref(pieceCategories[0].id)}>{pieceCategories[0].label}</a>
       <span aria-hidden="true">/</span>
       <span aria-current="page">{title}</span>
     </nav>
@@ -43,6 +47,10 @@ const isWide = (i: number) => i === 0 || (i === morePhotos.length - 1 && i % 2 =
         <dl class="facts">
           <div><dt>Year</dt><dd>{year}</dd></div>
           <div><dt>Process</dt><dd>{process}</dd></div>
+          <div>
+            <dt>Category</dt>
+            <dd>{pieceCategories.map((c, i) => <>{i > 0 && ', '}<a href={categoryHref(c.id)}>{c.label}</a></>)}</dd>
+          </div>
           {dimensions && <div><dt>Size</dt><dd>{dimensions}</dd></div>}
           {availability && <div><dt>Availability</dt><dd>{availability}</dd></div>}
         </dl>

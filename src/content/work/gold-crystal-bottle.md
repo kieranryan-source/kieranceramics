@@ -2,6 +2,7 @@
 title: Gold crystal bottle
 year: 2025
 process: Crystalline glaze, iron
+categories: [crystalline]
 image: ../../assets/photos/gold-crystal-bottle.jpg
 imageAlt: A small, rounded bottle with bright gold crystals on a slightly metallic field
 order: 7

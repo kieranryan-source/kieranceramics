@@ -2,6 +2,7 @@
 title: Cobalt crystalline bottle
 year: 2025
 process: Crystalline glaze, cobalt
+categories: [crystalline]
 image: ../../assets/photos/cobalt-bottle.jpg
 imageAlt: A tall bottle covered in bright cobalt blue crystals
 order: 6

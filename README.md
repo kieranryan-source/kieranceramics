@@ -14,6 +14,7 @@ Every push to `main` rebuilds and publishes the site.
 title: Blue vase
 year: 2026
 process: Crystalline glaze on porcelain
+categories: [crystalline]   # one or more of: crystalline, standard-glazes, 3d-printed
 dimensions: 21 x 12 cm
 image: ../../assets/photos/blue-vase.jpg
 imageAlt: Tall porcelain vase with pale blue crystals on a cobalt ground
@@ -33,6 +34,8 @@ A few sentences about the piece, the firing, and care.
 ```
 
 The file name becomes the address: `blue-vase.md` is `/work/blue-vase/`.
+
+`categories` sorts the piece on the Work page, where visitors can filter by kind of work. Each category has its own page, like `/work/category/crystalline/`, and a category only shows once it has a piece in it. To rename a category or add a new one, edit `src/lib/categories.ts`.
 
 Extra photos under `morePhotos` go across the page below the main photo and text: the first one large, then the rest in pairs (cropped to 3:2 so each pair lines up). An odd one out at the end goes large too. Landscape shots work best.
 

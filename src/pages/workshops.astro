@@ -3,16 +3,39 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Banner from '../components/Banner.astro';
 import { site } from '../site.config';
+import Media from '../components/Media.astro';
 import tiles from '../assets/photos/workshop-tiles.jpg';
+import kilnBefore from '../assets/photos/kiln-tiles-before.jpg';
+import kilnAfter from '../assets/photos/kiln-tiles-after.jpg';
+import tileBrown from '../assets/photos/tile-brown-crystals.jpg';
+import tileBlue from '../assets/photos/tile-blue-spots.jpg';
+import tileWhite from '../assets/photos/tile-white-crystals.jpg';
+import tilePale from '../assets/photos/tile-pale-blue.jpg';
+import catcher from '../assets/photos/copper-cup-on-catcher.jpg';
+
+const firing = [
+  { image: kilnBefore, alt: 'Looking down into an electric kiln loaded with rows of small test tiles in pale, chalky glaze colors', caption: 'Before: a kiln load of test tiles, each with a different raw glaze' },
+  { image: kilnAfter, alt: 'The same kiln after firing, the test tiles now glossy blues, greens, browns and whites', caption: 'After: the same load, fired' },
+];
+const fired = [
+  { image: tileBrown, alt: 'A test tile on dark clay held in the fingers, brown crystals spreading across white glaze', caption: 'Pale crystals on dark clay' },
+  { image: tileBlue, alt: 'A grey test tile with round blue crystals, held in the fingers', caption: 'Blue crystals on grey' },
+  { image: tileWhite, alt: 'A test tile with white crystals on a creamy glaze, on its small catcher', caption: 'White crystals on cream' },
+];
+const kiln = [
+  { image: tilePale, alt: 'A pale blue crystalline test tile held up over the open kiln, more tiles still on the shelf below', caption: 'Straight out of the kiln' },
+  { image: catcher, alt: 'A turquoise crystalline cup on its glaze catcher, glaze run down the pedestal and pooled in the dish below', caption: 'Crystalline glaze runs, so every piece fires on a catcher. The foot is ground clean afterwards.' },
+];
 
 const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Base title="Workshops" description={`Crystalline glaze workshops and ceramics classes taught by Kieran Ryan in ${site.location}.`} image={tiles}>
   <Banner
+    below
     image={tiles}
-    focus="50% 62%"
-    alt="Three crystalline test pieces on glaze catchers, in teal, cobalt blue and mauve"
+    focus="50% 50%"
+    alt="Three crystalline test pieces on glaze catchers, in teal, deep blue and mauve"
     title="Workshops"
   />
 
@@ -31,6 +54,11 @@ const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order
           <span class="secondary">
             {w.data.hostUrl ? <a class="link" href={w.data.hostUrl} target="_blank" rel="noopener">{w.data.host}</a> : w.data.host}
           </span>
+          {w.data.hostInstagram && (
+            <span class="tertiary">
+              <a class="link" href={w.data.hostInstagram.url} target="_blank" rel="noopener">{w.data.hostInstagram.handle}</a> on Instagram
+            </span>
+          )}
           <span class="tertiary">{w.data.summary}</span>
           <span class="tertiary">{w.data.schedule}</span>
         </div>
@@ -40,5 +68,38 @@ const workshops = (await getCollection('workshops')).sort((a, b) => a.data.order
       New dates go up on <a class="link" href={site.instagram.url} target="_blank" rel="noopener">Instagram</a> first.
       For a private session or a group, <a class="link" href="/contact/">get in touch</a>.
     </p>
+  </section>
+
+  <section class="section container" aria-labelledby="tiles-heading">
+    <div class="section-head">
+      <h2 class="page-title" id="tiles-heading">From test tile to kiln</h2>
+      <p class="lead muted" style="margin-top: 1rem">
+        Every new glaze starts as a test tile. In the workshops we mix, apply and fire them together.
+      </p>
+    </div>
+    <div class="photo-grid" style="--cols: 2">
+      {firing.map((p) => (
+        <figure>
+          <Media image={p.image} alt={p.alt} aspect="3 / 4" sizes="(max-width: 480px) 100vw, 50vw" />
+          <figcaption>{p.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+    <div class="photo-grid" style="--cols: 3">
+      {fired.map((p) => (
+        <figure>
+          <Media image={p.image} alt={p.alt} aspect="3 / 4" sizes="(max-width: 480px) 100vw, (max-width: 760px) 50vw, 33vw" />
+          <figcaption>{p.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+    <div class="photo-grid" style="--cols: 2">
+      {kiln.map((p) => (
+        <figure>
+          <Media image={p.image} alt={p.alt} aspect="3 / 4" sizes="(max-width: 480px) 100vw, 50vw" />
+          <figcaption>{p.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
   </section>
 </Base>

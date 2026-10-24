@@ -2,11 +2,22 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { site } from '../site.config';
+import pressList from '../data/press.json';
+
+// Articles, interviews and features from src/data/press.json. The Press section stays hidden while it's empty.
+interface PressItem {
+  title: string;        // the headline
+  publication: string;  // e.g. "The East Hampton Star"
+  when: string;         // e.g. "March 2027"
+  url?: string;
+  order?: number;
+}
 
 const exhibitions = (await getCollection('exhibitions')).sort((a, b) => a.data.order - b.data.order);
+const press = (pressList as PressItem[]).toSorted((a, b) => (a.order ?? 100) - (b.order ?? 100));
 ---
 
-<Base title="Exhibitions" description={`Exhibitions of crystalline ceramics by Kieran Ryan, ${site.location}.`}>
+<Base title="Exhibitions" description={`Exhibitions and markets showing crystalline ceramics by Kieran Ryan, ${site.location}.`}>
   <section class="container page-head narrow">
     <h1 class="page-title">Exhibitions</h1>
   </section>
@@ -26,10 +37,23 @@ const exhibitions = (await getCollection('exhibitions')).sort((a, b) => a.data.o
     </div>
   </section>
 
-  <section class="section container narrow" aria-labelledby="press-heading">
-    <div class="prose" style="text-align: center">
-      <h2 id="press-heading">Press</h2>
-      <p class="draft">Draft: list articles, interviews or features about your work here, or remove this section.</p>
-    </div>
-  </section>
+  {press.length > 0 && (
+    <section class="section container narrow" aria-labelledby="press-heading">
+      <div class="section-head">
+        <h2 class="page-title" id="press-heading">Press</h2>
+      </div>
+      <div class="list">
+        {press.map((p) => {
+          const Row = p.url ? 'a' : 'div';
+          return (
+            <Row class="list-row" href={p.url} target={p.url ? '_blank' : undefined} rel={p.url ? 'noopener' : undefined}>
+              <span class="primary">{p.title}</span>
+              <span class="secondary">{p.publication}</span>
+              <span class="tertiary">{p.when}</span>
+            </Row>
+          );
+        })}
+      </div>
+    </section>
+  )}
 </Base>

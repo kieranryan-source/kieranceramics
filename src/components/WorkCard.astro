@@ -13,7 +13,7 @@ interface Props {
 }
 
 const { piece, sizes = '(max-width: 560px) 100vw, (max-width: 960px) 50vw, 33vw', aspect = '1 / 1', showPrice = false, eager = false } = Astro.props;
-const { title, process, image, imageAlt, shop } = piece.data;
+const { title, process, image, thumbnail, imageAlt, shop } = piece.data;
 const sold = shop?.status === 'sold';
 const price = shop?.price != null
   ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(shop.price)
@@ -22,7 +22,7 @@ const price = shop?.price != null
 
 <a class="tile" href={`/work/${piece.id}/`}>
   <div class="tile-photo">
-    <Media image={image} alt={imageAlt ?? title} aspect={aspect} sizes={sizes} eager={eager} />
+    <Media image={thumbnail ?? image} alt={imageAlt ?? title} aspect={aspect} sizes={sizes} eager={eager} />
     {showPrice && sold && <span class="tag">Sold</span>}
   </div>
   <div class="tile-caption">

@@ -2,6 +2,7 @@
 title: Pierced black porcelain bowl
 year: 2026
 process: Pierced black porcelain
+categories: [standard-glazes]
 dimensions: About 8 in wide
 image: ../../assets/photos/black-porcelain-bowl.jpg
 imageAlt: A shallow black porcelain bowl pierced with an irregular pattern of openings, seen from above

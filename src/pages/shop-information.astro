@@ -3,18 +3,18 @@ import Base from '../layouts/Base.astro';
 import { site } from '../site.config';
 ---
 
-<Base title="Shop information" description="How the shop works: buying one-of-a-kind pieces, shipping, care and returns.">
+<Base title="Shipping, care and returns" description="How the shop works: buying one-of-a-kind pieces, shipping, care, returns and breakages.">
   <section class="container page-head narrow">
-    <h1 class="page-title">Shop information</h1>
+    <h1 class="page-title">Shipping, care and returns</h1>
+    <p class="muted" style="margin-top: 1rem; font-size: var(--step--1)"><a class="link" href="/shop/">Back to the shop</a></p>
   </section>
 
-  <section class="section container narrow" aria-label="Shop information">
+  <section class="section container narrow" aria-label="Shipping, care and returns">
     <div class="prose">
       <h2>How the shop works</h2>
       <p>
-        Every piece is one of a kind. Once it sells, it's gone. New work goes up on
-        <a href={site.instagram.url} target="_blank" rel="noopener">Instagram</a> first, then in the
-        <a href="/shop/">shop</a>.
+        Every piece is one of a kind. Once it sells, it's gone. New work goes up on <a href={site.instagram.url} target="_blank" rel="noopener">Instagram</a>
+        first, then in the <a href="/shop/">shop</a>.
       </p>
       <p>
         Pieces with a Buy button can be bought straight away. Checkout is handled securely by Stripe.
@@ -23,19 +23,42 @@ import { site } from '../site.config';
       </p>
 
       <h2>Shipping</h2>
-      <p class="draft">
-        Draft: say where you ship, how long it takes, what it costs, and how pieces are packed.
+      <p>
+        I'm not shipping at the moment while I work on my next body of work. When shipping opens
+        again, I'll post it here on the website.
       </p>
 
       <h2>Care</h2>
-      <p class="draft">
-        Draft: for example, hand washing only, and that crystalline surfaces are decorative unless a
-        piece's listing says its inside is lined with a food-safe glaze. Check this matches your glazes.
+      <p>
+        Crystalline surfaces are not food safe. Treat a crystalline piece as decorative, and keep
+        food and drink off the crystalline glaze.
+      </p>
+      <p>
+        Always wash pieces by hand. No dishwasher, microwave or oven. Use warm water, mild soap and a
+        soft cloth, and dry the piece completely before putting it away. Avoid scouring pads and
+        abrasive cleaners, which can dull the glaze.
+      </p>
+      <p>
+        Lift pieces with both hands, by the body rather than the rim. Pierced pieces in particular
+        are delicate around their openings. Keep pieces away from sudden changes in temperature,
+        like hot water poured into a cold piece.
       </p>
 
       <h2>Returns</h2>
-      <p class="draft">
-        Draft: say whether you accept returns, and what happens if a piece arrives damaged.
+      <p>I don't accept returns. Please look over the photos and details carefully before buying.</p>
+
+      <h2>Breakages</h2>
+      <p>
+        Every piece is packed carefully, but occasionally something goes astray or arrives broken.
+        If that happens, please <a href="/contact/">get in touch</a> and we can arrange a refund, or
+        a replacement if I have a similar piece. Each case is handled individually. Postal charges,
+        return shipping costs, customs charges and handling fees are deducted from any refund due.
+      </p>
+      <p>
+        Please check your shipping address before you order. If a wrong address is only noticed
+        after the parcel has shipped, I'll always try to help, but I can't refund a parcel that is
+        lost as a result. The same goes for parcels sent on to someone else after delivery: I can't
+        cover loss or damage on that second journey.
       </p>
 
       <h2>Questions</h2>

@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Media from '../../components/Media.astro';
 import BuyButton from '../../components/BuyButton.astro';
+import { categories, categoryHref } from '../../lib/categories';
 
 export async function getStaticPaths() {
   const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
@@ -13,10 +14,15 @@ export async function getStaticPaths() {
 }
 
 const { piece, prev, next } = Astro.props;
-const { title, year, process, dimensions, image, imageAlt, aspect, morePhotos, shop } = piece.data;
+const { title, year, process, dimensions, image, imageAlt, aspect, morePhotos, video, shop } = piece.data;
+const pieceCategories = categories.filter((c) => piece.data.categories.includes(c.id));
 const { Content } = await render(piece);
 
 const availability = !shop ? null : shop.status === 'sold' ? 'Sold' : 'Available';
+
+// Extra photos fill the page width below: one large, then pairs side by side.
+// If a pair would be left with one photo, that last photo goes large too.
+const isWide = (i: number) => i === 0 || (i === morePhotos.length - 1 && i % 2 === 1);
 ---
 
 <Base title={title} description={`${title}, ${process}, ${year}. By Kieran Ryan.`} image={image}>
@@ -24,15 +30,14 @@ const availability = !shop ? null : shop.status === 'sold' ? 'Sold' : 'Available
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/work/">Work</a>
       <span aria-hidden="true">/</span>
+      <a href={categoryHref(pieceCategories[0].id)}>{pieceCategories[0].label}</a>
+      <span aria-hidden="true">/</span>
       <span aria-current="page">{title}</span>
     </nav>
 
     <div class="piece">
-      <div class="piece-photos">
+      <div class="piece-photo">
         <Media image={image} alt={imageAlt ?? title} aspect={aspect} sizes="(max-width: 860px) 100vw, 58vw" eager />
-        {morePhotos.map((p, i) => (
-          <Media image={p.image} alt={p.alt ?? `${title}, photo ${i + 2}`} sizes="(max-width: 860px) 100vw, 58vw" />
-        ))}
       </div>
 
       <div class="piece-info">
@@ -42,6 +47,10 @@ const availability = !shop ? null : shop.status === 'sold' ? 'Sold' : 'Available
         <dl class="facts">
           <div><dt>Year</dt><dd>{year}</dd></div>
           <div><dt>Process</dt><dd>{process}</dd></div>
+          <div>
+            <dt>Category</dt>
+            <dd>{pieceCategories.map((c, i) => <>{i > 0 && ', '}<a href={categoryHref(c.id)}>{c.label}</a></>)}</dd>
+          </div>
           {dimensions && <div><dt>Size</dt><dd>{dimensions}</dd></div>}
           {availability && <div><dt>Availability</dt><dd>{availability}</dd></div>}
         </dl>
@@ -49,6 +58,41 @@ const availability = !shop ? null : shop.status === 'sold' ? 'Sold' : 'Available
         <div class="prose"><Content /></div>
       </div>
     </div>
+
+    {morePhotos.length > 0 && (
+      <div class="detail-photos">
+        {morePhotos.map((p, i) => (
+          <div class:list={['detail', { wide: isWide(i) }]}>
+            <Media
+              image={p.image}
+              alt={p.alt ?? `${title}, photo ${i + 2}`}
+              aspect={isWide(i) ? undefined : '3 / 2'}
+              sizes={isWide(i) ? '(max-width: 1536px) 100vw, 1440px' : '(max-width: 760px) 100vw, 50vw'}
+            />
+          </div>
+        ))}
+      </div>
+    )}
+
+    {video && (
+      <figure class="piece-video">
+        <video poster={video.poster} autoplay muted loop playsinline preload="metadata" aria-label={video.caption}>
+          <source src={video.src} type="video/mp4" />
+          {video.webm && <source src={video.webm} type="video/webm" />}
+        </video>
+        <figcaption>{video.caption}</figcaption>
+      </figure>
+    )}
+    <script>
+      // For people who ask for less motion, the clip waits until they press play.
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll<HTMLVideoElement>('.piece-video video').forEach((v) => {
+          v.pause();
+          v.autoplay = false;
+          v.controls = true;
+        });
+      }
+    </script>
 
     <nav class="section" aria-label="More work">
       <div class="pager">

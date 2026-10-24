@@ -22,8 +22,8 @@ export const site = {
   // Put the photo in src/assets/photos/ and write its file name here, e.g. 'kieran.jpg'.
   // While this is empty, a grey "Portrait" placeholder shows in its place.
   portrait: {
-    image: '',
-    alt: 'Kieran Ryan in the studio',
+    image: 'kieran-portrait.jpg',
+    alt: 'Kieran Ryan smiling, standing on a sandy bluff above the ocean',
   },
 
   // Leave email empty to hide it everywhere. Add the address you want public.
@@ -35,15 +35,15 @@ export const site = {
 
   location: 'East Hampton, New York',
 
-  // The menu, in order. Shown in lowercase.
+  // The menu, in order. Items marked footerOnly appear in the footer but not the top menu.
   nav: [
     { label: 'Work', href: '/work/' },
     { label: 'Shop', href: '/shop/' },
-    { label: 'Shop information', href: '/shop-information/' },
     { label: 'Commissions', href: '/commissions/' },
     { label: 'Workshops', href: '/workshops/' },
     { label: 'Exhibitions', href: '/exhibitions/' },
     { label: 'About', href: '/about/' },
     { label: 'Contact', href: '/contact/' },
+    { label: 'Shipping, care and returns', href: '/shop-information/', footerOnly: true },
   ],
 };

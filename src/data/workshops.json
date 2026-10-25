@@ -14,15 +14,15 @@
   },
   {
     "id": "mudita",
-    "title": "Ceramics classes",
+    "title": "Intermediate wheel throwing",
     "host": "Mudita Ceramics School of the Hamptons",
     "hostUrl": "https://www.muditaceramicsschoolofthehamptons.com/",
     "hostInstagram": {
       "handle": "@muditaceramicsschool",
       "url": "https://www.instagram.com/muditaceramicsschool/"
     },
-    "summary": "Classes in the studio at Mudita. Draft text: describe what you teach here.",
-    "schedule": "See Mudita's Instagram for the current schedule",
+    "summary": "A weekly class on the wheel in the studio at Mudita.",
+    "schedule": "Wednesdays, 6 to 9 pm",
     "order": 2
   }
 ]

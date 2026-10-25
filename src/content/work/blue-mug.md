@@ -1,14 +1,14 @@
 ---
-title: Speckled blue mug
+title: Rutile blue mug
 year: 2025
-process: Wheel-thrown stoneware, speckled blue glaze
+process: Wheel-thrown stoneware, rutile blue glaze
 categories: [standard-glazes]
 image: ../../assets/photos/blue-mug.jpg
-imageAlt: A straight-sided mug with a slight flare, in a speckled deep blue glaze with a pulled handle
+imageAlt: A straight-sided mug with a slight flare, in a mottled rutile blue glaze with a pulled handle
 thumbnail: ../../assets/photos/blue-mug-square.jpg
 morePhotos:
   - image: ../../assets/photos/blue-mug-base.jpg
     alt: The mug on its side, showing the stamped base and the bare clay foot ring below the glaze
 order: 13
 ---
-A thrown mug in a speckled blue glaze. It makes a good companion to the printed stoneware mug: the same kind of form, made on the wheel instead of the printer.
+A thrown mug in a rutile blue glaze. It makes a good companion to the printed stoneware mug: the same kind of form, made on the wheel instead of the printer.

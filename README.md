@@ -30,6 +30,7 @@ video:              # optional: a short silent clip, shown under the photos
   caption: The vase just out of the kiln
 featured: true      # show on the homepage (the first four featured pieces appear)
 order: 1            # lower numbers come first
+hidden: true        # optional: keep it off the site entirely until you remove this line
 shop:               # leave this whole block out unless it's for sale or already sold
   status: available # or: sold
   price: 340
@@ -72,6 +73,21 @@ How the button behaves:
 | `status: available` with a `paymentLink` | **Buy**, opens Stripe checkout |
 | `status: available`, no link yet | **Ask about this piece**, goes to the contact page |
 | `status: sold` | **Sold** |
+
+## Get ready for a drop
+
+1. Add the new pieces as usual, each with `hidden: true`. They build but appear nowhere: not in the galleries, the shop, or at their own address.
+2. On the day, delete the `hidden: true` lines (and add the Stripe links).
+3. If you want a line at the top of the homepage and the Shop, set `announcement` in `src/site.config.ts`, and clear it again afterwards.
+
+## Mailing list
+
+The sign-up form shows on the homepage, the Shop and in the footer once `newsletter` in `src/site.config.ts` has a `provider` and `id`. With either empty, no form appears.
+
+- Kit (kit.com): `provider: 'kit'`, and `id` is the form's number from its embed code.
+- Buttondown: `provider: 'buttondown'`, and `id` is your Buttondown username.
+
+The heading and the line of text above the form are set there too.
 
 ## Change the look
 

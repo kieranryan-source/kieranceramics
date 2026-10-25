@@ -1,12 +1,13 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { allWork } from '../../lib/work';
+import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Media from '../../components/Media.astro';
 import BuyButton from '../../components/BuyButton.astro';
 import { categories, categoryHref } from '../../lib/categories';
 
 export async function getStaticPaths() {
-  const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  const work = await allWork();
   return work.map((piece, i) => ({
     params: { slug: piece.id },
     props: { piece, prev: work[i - 1], next: work[i + 1] },

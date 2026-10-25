@@ -1,0 +1,8 @@
+---
+// One optional line of news, set in site.announcement. Shows nothing while it's empty.
+import { site } from '../site.config';
+---
+
+{site.announcement && (
+  <p class="announcement container">{site.announcement}</p>
+)}

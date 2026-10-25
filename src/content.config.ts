@@ -37,6 +37,7 @@ const work = defineCollection({
         })
         .optional(),
       featured: z.boolean().default(false),      // show on the homepage
+      hidden: z.boolean().default(false),        // keep off the site entirely, e.g. pieces waiting for a drop
       order: z.number().default(100),            // lower numbers come first
       shop: z
         .object({

@@ -499,3 +499,23 @@ a.list-row:hover { color: var(--muted); }
   * { scroll-behavior: auto !important; }
 }
 
+
+/* Mailing list sign-up and the optional announcement line */
+.newsletter { text-align: center; }
+.newsletter .page-title { margin-bottom: 0.75rem; }
+.newsletter-text { color: var(--muted); max-width: 40ch; margin-inline: auto; }
+.newsletter form { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.25rem; flex-wrap: wrap; }
+.newsletter input {
+  font: inherit;
+  min-height: 3rem;
+  padding: 0 1rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  width: min(100%, 20rem);
+}
+.newsletter input:focus-visible { outline: 1px solid var(--ink); outline-offset: 0; border-color: var(--ink); }
+.newsletter.compact { margin-bottom: 2.5rem; }
+.newsletter.compact .newsletter-text { font-size: var(--step--1); }
+.newsletter.compact form { margin-top: 0.75rem; }
+.announcement { text-align: center; font-size: var(--step--1); padding-top: 1rem; color: var(--ink); }

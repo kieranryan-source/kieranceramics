@@ -5,6 +5,7 @@ process: Crystalline glaze, turquoise and tan
 categories: [crystalline]
 image: ../../assets/photos/turquoise-bottle.jpg
 imageAlt: A small bottle covered in turquoise and light teal crystals on a mottled tan and green field
+thumbnail: ../../assets/photos/turquoise-bottle-square.jpg
 featured: true
 order: 3
 ---

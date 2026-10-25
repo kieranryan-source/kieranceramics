@@ -368,7 +368,7 @@ a.banner-inner:hover img { transform: scale(1.02); }
 }
 
 /* Portrait on the About page */
-.portrait-solo { max-width: 26rem; margin-inline: auto; }
+.portrait-solo { max-width: 36rem; margin-inline: auto; }
 
 /* Lists of workshops, exhibitions and contact details */
 .list { border-top: 1px solid var(--rule); }

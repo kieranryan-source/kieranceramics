@@ -13,8 +13,6 @@ morePhotos:
     alt: Close-up of the lower wall, round deep blue crystals crowding down to the bare clay foot
   - image: ../../assets/photos/cobalt-bottle-foot.jpg
     alt: The bottle on its side, crystals running all the way down to the bare clay foot
-  - image: ../../assets/photos/cobalt-bottle-neck-shoulder.jpg
-    alt: The neck and shoulder, darker purple crystals ringing the shoulder and paler blue ones on the neck
 order: 6
 shop:
   status: sold

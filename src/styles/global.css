@@ -467,6 +467,8 @@ a.list-row:hover { color: var(--muted); }
 .steps p { font-size: var(--step--1); color: var(--muted); max-width: 34ch; margin-inline: auto; padding-inline: 0.5rem; }
 @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
 
+.mockup figcaption { margin-top: 0.75rem; font-size: var(--step--1); color: var(--muted); text-align: center; }
+
 /* Captioned photo grids on the About and Workshops pages */
 .photo-grid { display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem) var(--tile-gap); }
 .photo-grid + .photo-grid { margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); }

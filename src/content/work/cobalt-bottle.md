@@ -7,14 +7,14 @@ image: ../../assets/photos/cobalt-bottle-front.jpg
 imageAlt: A tall bottle covered in bright deep blue crystals
 thumbnail: ../../assets/photos/cobalt-bottle-square.jpg
 morePhotos:
-  - image: ../../assets/photos/cobalt-bottle-neck-shoulder.jpg
-    alt: The neck and shoulder, darker purple crystals ringing the shoulder and paler blue ones on the neck
   - image: ../../assets/photos/cobalt-bottle-shoulder.jpg
     alt: Close-up of the shoulder and upper body, round deep blue crystals on a lighter blue ground
-  - image: ../../assets/photos/cobalt-bottle-foot.jpg
-    alt: The bottle on its side, crystals running all the way down to the bare clay foot
   - image: ../../assets/photos/cobalt-bottle-lower-wall.jpg
     alt: Close-up of the lower wall, round deep blue crystals crowding down to the bare clay foot
+  - image: ../../assets/photos/cobalt-bottle-foot.jpg
+    alt: The bottle on its side, crystals running all the way down to the bare clay foot
+  - image: ../../assets/photos/cobalt-bottle-neck-shoulder.jpg
+    alt: The neck and shoulder, darker purple crystals ringing the shoulder and paler blue ones on the neck
 order: 6
 shop:
   status: sold

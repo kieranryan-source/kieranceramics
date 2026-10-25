@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import Media from '../components/Media.astro';
+import { photo } from '../lib/photos';
+import list from '../data/gallery.json';
+
+// Process shots, details and moments from the studio, from src/data/gallery.json.
+// Each photo keeps its own shape; the page flows them into columns.
+interface GalleryItem {
+  image: string;    // a file name in src/assets/photos/
+  alt: string;
+  caption?: string;
+}
+
+const items = (list as GalleryItem[]).map((item) => ({ ...item, photo: photo(item.image) }));
+---
+
+<Base title="Gallery" description="Process, details and moments from Kieran Ryan's ceramics studio.">
+  <section class="container page-head">
+    <h1 class="page-title">Gallery</h1>
+    <p class="lead">Process, details and moments from the studio.</p>
+  </section>
+
+  <section class="section container" aria-label="Photos">
+    <div class="moments">
+      {items.map((item, i) => (
+        <figure>
+          <Media image={item.photo} alt={item.alt} sizes="(max-width: 480px) 100vw, (max-width: 760px) 50vw, 33vw" eager={i < 3} />
+          {item.caption && <figcaption>{item.caption}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  </section>
+</Base>

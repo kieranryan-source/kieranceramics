@@ -18,7 +18,7 @@ export const site = {
     button: { label: 'View the work', href: '/work/' },
   },
 
-  // Your portrait, shown on the homepage and the About page.
+  // Your portrait, shown on the homepage and the Bio page.
   // Put the photo in src/assets/photos/ and write its file name here, e.g. 'kieran.jpg'.
   // While this is empty, a grey "Portrait" placeholder shows in its place.
   portrait: {
@@ -53,11 +53,12 @@ export const site = {
   // The menu, in order. Items marked footerOnly appear in the footer but not the top menu.
   nav: [
     { label: 'Work', href: '/work/' },
+    { label: 'Gallery', href: '/gallery/' },
     { label: 'Shop', href: '/shop/' },
     { label: 'Commissions', href: '/commissions/' },
     { label: 'Workshops', href: '/workshops/' },
     { label: 'Exhibitions', href: '/exhibitions/' },
-    { label: 'About', href: '/about/' },
+    { label: 'Bio', href: '/about/' },
     { label: 'Contact', href: '/contact/' },
     { label: 'Shipping, care and returns', href: '/shop-information/', footerOnly: true },
   ],

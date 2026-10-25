@@ -101,7 +101,17 @@ The font is Work Sans, used light throughout. It's free and served from the site
 
 ## Add your portrait
 
-Put the photo in `src/assets/photos/`, for example `kieran.jpg`, and set `portrait.image` in `src/site.config.ts` to `'kieran.jpg'`. It shows on the homepage and the About page, cropped to 4:5 (portrait shape). Until then a grey placeholder holds its place.
+Put the photo in `src/assets/photos/`, for example `kieran.jpg`, and set `portrait.image` in `src/site.config.ts` to `'kieran.jpg'`. It shows on the homepage and the Bio page, cropped to 4:5 (portrait shape). Until then a grey placeholder holds its place.
+
+## Gallery
+
+The Gallery page shows process shots, details and studio moments, from `src/data/gallery.json`, in the order listed. Each entry names a photo in `src/assets/photos/`, a description for screen readers, and an optional caption:
+
+```json
+{ "image": "studio-carving.jpg", "alt": "Hands carving rings into a plate on the wheel", "caption": "Carving rings into a plate" }
+```
+
+Photos keep their own shape, so tall and wide shots can be mixed.
 
 ## Exhibitions and press
 

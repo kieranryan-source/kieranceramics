@@ -9,15 +9,24 @@ import WorkCard from '../components/WorkCard.astro';
 import { site } from '../site.config';
 import { photo } from '../lib/photos';
 import tiles from '../assets/photos/workshop-tiles.jpg';
+import { getImage } from 'astro:assets';
+import { person, absolute } from '../lib/seo';
 
 const work = await allWork();
 // Six tiles fill two rows of the gallery: featured pieces first, then the rest in order
 const selected = [...work.filter((p) => p.data.featured), ...work.filter((p) => !p.data.featured)].slice(0, 6);
 const heroImage = photo(site.hero.image);
 const portrait = photo(site.portrait.image, true);
+
+// Tells search engines who the site belongs to.
+const portraitImage = portrait ? await getImage({ src: portrait, width: 800, format: 'jpg' }) : undefined;
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: site.title, url: `${site.url}/`, author: { '@id': person['@id'] } },
+  { '@context': 'https://schema.org', ...person, description: site.description, ...(portraitImage && { image: absolute(portraitImage.src) }) },
+];
 ---
 
-<Base image={heroImage}>
+<Base image={heroImage} imageAlt={site.hero.alt} jsonLd={jsonLd}>
   <Announcement />
   <Banner
     tall

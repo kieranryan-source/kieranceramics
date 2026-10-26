@@ -4,6 +4,8 @@ export const site = {
   name: 'Kieran Ryan',
   tagline: 'Crystalline Ceramics',   // the small line under the name in the header
   title: 'Kieran Ryan Ceramics',
+  // The homepage's title in search results and browser tabs. Around 60 characters shows in full.
+  homeTitle: 'Kieran Ryan Ceramics | Crystalline Porcelain, East Hampton NY',
   url: 'https://www.kieranceramics.com',
   description:
     'Crystalline-glazed porcelain and stoneware by Kieran Ryan, made in East Hampton, New York.',
@@ -34,6 +36,13 @@ export const site = {
   },
 
   location: 'East Hampton, New York',
+
+  // Visitor statistics and search tools. See "Analytics and search" in the README.
+  //  - cloudflareAnalytics: the token from Cloudflare Web Analytics (the long code after "token" in its snippet)
+  //  - googleVerification: the code from Google Search Console's "HTML tag" option (the content="..." part)
+  // Leave either empty to turn it off.
+  cloudflareAnalytics: '',
+  googleVerification: '',
 
   // Mailing list. The sign-up form appears on the homepage, the Shop and in the footer once
   // provider and id are filled in, and stays hidden while they're empty.

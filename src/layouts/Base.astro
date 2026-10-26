@@ -13,10 +13,22 @@ interface Props {
   title?: string;
   description?: string;
   image?: ImageMetadata; // shown when the page is shared in messages and social posts
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  jsonLd?: object | object[]; // structured data for search engines (schema.org)
+  noindex?: boolean;          // keep this page out of search results
 }
 
-const { title, description = site.description, image = defaultShareImage } = Astro.props;
-const pageTitle = title ? `${title} | ${site.title}` : site.title;
+const {
+  title,
+  description = site.description,
+  image = defaultShareImage,
+  imageAlt,
+  type = 'website',
+  jsonLd,
+  noindex = false,
+} = Astro.props;
+const pageTitle = title ? `${title} | ${site.title}` : site.homeTitle;
 const canonical = new URL(Astro.url.pathname, site.url);
 const share = await getImage({ src: image, width: 1200, format: 'jpg' });
 const shareUrl = new URL(share.src, site.url);
@@ -29,15 +41,27 @@ const shareUrl = new URL(share.src, site.url);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap.xml" />
+    {site.googleVerification && <meta name="google-site-verification" content={site.googleVerification} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={shareUrl} />
+    <meta property="og:image:width" content={String(share.attributes.width ?? 1200)} />
+    {share.attributes.height && <meta property="og:image:height" content={String(share.attributes.height)} />}
+    {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#ffffff" />
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {site.cloudflareAnalytics && (
+      <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: site.cloudflareAnalytics })} />
+    )}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

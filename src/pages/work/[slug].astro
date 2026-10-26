@@ -5,6 +5,9 @@ import Base from '../../layouts/Base.astro';
 import Media from '../../components/Media.astro';
 import BuyButton from '../../components/BuyButton.astro';
 import { categories, categoryHref } from '../../lib/categories';
+import { getImage } from 'astro:assets';
+import { site } from '../../site.config';
+import { clip, firstParagraph, person, absolute } from '../../lib/seo';
 
 export async function getStaticPaths() {
   const work = await allWork();
@@ -21,12 +24,49 @@ const { Content } = await render(piece);
 
 const availability = !shop ? null : shop.status === 'sold' ? 'Sold' : 'Available';
 
+// For search results: a description from the piece's own text, and structured data describing the piece.
+const description = clip(`${title}: ${process}. ${firstParagraph(piece.body)}`);
+const pageUrl = absolute(`/work/${piece.id}/`);
+const photoUrl = image ? absolute((await getImage({ src: image, width: 1200, format: 'jpg' })).src) : undefined;
+const offer = shop?.price && {
+  '@type': 'Offer',
+  price: shop.price,
+  priceCurrency: 'USD',
+  availability: shop.status === 'sold' ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
+  url: pageUrl,
+};
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': offer ? ['VisualArtwork', 'Product'] : 'VisualArtwork',
+    name: title,
+    description,
+    url: pageUrl,
+    image: photoUrl,
+    artform: 'Ceramics',
+    artMedium: process,
+    dateCreated: String(year),
+    ...(dimensions && { size: dimensions }),
+    creator: person,
+    ...(offer && { brand: { '@type': 'Brand', name: site.title }, offers: offer }),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Work', item: absolute('/work/') },
+      { '@type': 'ListItem', position: 2, name: pieceCategories[0].label, item: absolute(categoryHref(pieceCategories[0].id)) },
+      { '@type': 'ListItem', position: 3, name: title, item: pageUrl },
+    ],
+  },
+];
+
 // Extra photos fill the page width below: one large, then pairs side by side.
 // If a pair would be left with one photo, that last photo goes large too.
 const isWide = (i: number) => i === 0 || (i === morePhotos.length - 1 && i % 2 === 1);
 ---
 
-<Base title={title} description={`${title}, ${process}, ${year}. By Kieran Ryan.`} image={image}>
+<Base title={title} description={description} image={image} imageAlt={imageAlt} type="article" jsonLd={jsonLd}>
   <article class="container">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/work/">Work</a>

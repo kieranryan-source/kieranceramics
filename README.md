@@ -135,6 +135,26 @@ One "Draft:" note is left, where only you know the answer: the Mudita class desc
 
 When shipping opens again, update the Shipping section in `src/pages/shop-information.astro`.
 
+## Analytics and search
+
+**Visitor numbers (Cloudflare Web Analytics, free, no cookie banner needed):**
+
+1. In the Cloudflare dashboard, open **Analytics & Logs > Web Analytics** and choose **Add a site**. Enter `www.kieranceramics.com`.
+2. If Cloudflare offers to set it up automatically, accept and you're done: nothing on the site needs to change.
+3. Otherwise it shows a short snippet with `"token": "..."`. Put that token in `cloudflareAnalytics` in `src/site.config.ts`.
+
+Visits, top pages, where visitors came from and their countries then show under Web Analytics.
+
+**Google search (Search Console, free):**
+
+1. At search.google.com/search-console, add `www.kieranceramics.com` as a URL-prefix property.
+2. Choose the **HTML tag** check and copy the code inside `content="..."` into `googleVerification` in `src/site.config.ts`. Once that's live, press **Verify**.
+3. Under **Sitemaps**, submit `sitemap.xml`.
+
+Search Console shows which searches bring people to the site and flags any page Google can't read.
+
+**What the site already does for search engines:** each page has its own title and description (a piece uses the first paragraph of its text, so write that paragraph with care), `/sitemap.xml` lists every page and updates itself, and piece pages describe the piece in structured data (with its price when it's for sale). Photo descriptions (`imageAlt` and `alt`) also help pieces show up in image search.
+
 ## Work on it locally
 
 Needs Node 24 or newer.

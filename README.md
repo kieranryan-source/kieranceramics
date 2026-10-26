@@ -105,10 +105,10 @@ Put the photo in `src/assets/photos/`, for example `kieran.jpg`, and set `portra
 
 ## Gallery
 
-The Gallery page shows process shots, details and studio moments, from `src/data/gallery.json`, in the order listed. Each entry names a photo in `src/assets/photos/`, a description for screen readers, and an optional caption:
+The Gallery page shows process shots, details and studio moments, from `src/data/gallery.json`, in the order listed. Each entry names a photo in `src/assets/photos/` and a description for screen readers. The photos show without captions; add `"caption": "..."` to an entry if one ever needs a line of text under it.
 
 ```json
-{ "image": "studio-carving.jpg", "alt": "Hands carving rings into a plate on the wheel", "caption": "Carving rings into a plate" }
+{ "image": "studio-carving.jpg", "alt": "Hands carving rings into a plate on the wheel" }
 ```
 
 Photos keep their own shape, so tall and wide shots can be mixed.

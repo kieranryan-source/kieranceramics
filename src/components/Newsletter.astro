@@ -1,0 +1,30 @@
+---
+// Mailing list sign-up. Shows nothing until site.newsletter has a provider and id.
+// The form posts straight to the provider (Kit or Buttondown), which sends the confirmation email.
+import { site } from '../site.config';
+
+interface Props {
+  compact?: boolean;   // the smaller footer version
+}
+
+const { compact = false } = Astro.props;
+const { provider, id, title, text } = site.newsletter;
+const endpoints = {
+  kit: { action: `https://app.kit.com/forms/${id}/subscriptions`, field: 'email_address' },
+  buttondown: { action: `https://buttondown.com/api/emails/embed-subscribe/${id}`, field: 'email' },
+};
+const target = provider && id ? endpoints[provider] : null;
+const inputId = compact ? 'newsletter-email-footer' : 'newsletter-email';
+---
+
+{target && (
+  <section class:list={['newsletter', { compact, 'section container narrow': !compact }]} aria-label="Mailing list">
+    {!compact && <h2 class="page-title">{title}</h2>}
+    <p class="newsletter-text">{text}</p>
+    <form action={target.action} method="post" target="_blank">
+      <label class="visually-hidden" for={inputId}>Email address</label>
+      <input id={inputId} type="email" name={target.field} placeholder="Email address" autocomplete="email" required />
+      <button class="button" type="submit">Sign up</button>
+    </form>
+  </section>
+)}

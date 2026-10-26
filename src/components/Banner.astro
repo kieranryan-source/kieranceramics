@@ -1,5 +1,7 @@
 ---
-// A photo inside the page margins with a title centered on it, darkened just enough for white text to read.
+// A photo inside the page margins with a title centered on it. By default the photo is darkened just
+// enough for white text to read; `plain` keeps the photo as it is and sets the text in black instead,
+// and `below` keeps the photo as it is with the text in black underneath it (for busy photos).
 // Used for the homepage hero and the tops of section pages.
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
@@ -14,14 +16,16 @@ interface Props {
   heading?: 'h1' | 'h2';
   href?: string;       // makes the whole banner a link (when there's no button)
   focus?: string;      // which part of the photo to keep when it's cropped, e.g. '50% 80%' keeps the lower part
+  plain?: boolean;     // no darkening, black text: for light photos
+  below?: boolean;     // no darkening, black text under the photo: for busy photos
 }
 
-const { image, alt, title, subtitle, button, tall = false, heading = 'h1', href, focus } = Astro.props;
+const { image, alt, title, subtitle, button, tall = false, heading = 'h1', href, focus, plain = false, below = false } = Astro.props;
 const Heading = heading;
 const Wrap = href ? 'a' : 'div';
 ---
 
-<section class:list={['banner', 'container', { tall }]} aria-label={title}>
+<section class:list={['banner', 'container', { tall, plain, below }]} aria-label={title}>
   <Wrap class="banner-inner" href={href} style={focus ? `--focus: ${focus}` : undefined}>
     <Image
       src={image}

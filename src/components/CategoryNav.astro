@@ -1,0 +1,22 @@
+---
+// The row of category links at the top of the Work pages: all, then each category.
+import { categories, categoryHref, type CategoryId } from '../lib/categories';
+
+interface Props {
+  current?: CategoryId; // leave out on the page that shows all work
+  counts: Record<CategoryId, number>;
+}
+
+const { current, counts } = Astro.props;
+// Hide a category until it has at least one piece
+const shown = categories.filter((c) => counts[c.id] > 0);
+// Lowercase like the menu, but keep "3D" as written
+const navLabel = (label: string) => label.toLowerCase().replace(/\b3d\b/g, '3D');
+---
+
+<nav class="filters" aria-label="Kinds of work">
+  <a href="/work/" aria-current={current ? undefined : 'page'}>all</a>
+  {shown.map((c) => (
+    <a href={categoryHref(c.id)} aria-current={current === c.id ? 'page' : undefined}>{navLabel(c.label)}</a>
+  ))}
+</nav>

@@ -6,6 +6,12 @@ import crystals from '../assets/photos/crystals-closeup.jpg';
 import formPhoto from '../assets/photos/process-form.jpg';
 import glazePhoto from '../assets/photos/process-glaze.jpg';
 import firePhoto from '../assets/photos/process-fire.jpg';
+import carving from '../assets/photos/studio-carving.jpg';
+import piercing from '../assets/photos/studio-piercing.jpg';
+import plates from '../assets/photos/studio-plates.jpg';
+import cylinder from '../assets/photos/studio-printed-cylinder.jpg';
+import lattice from '../assets/photos/studio-printed-lattice.jpg';
+import gasKiln from '../assets/photos/studio-gas-kiln.jpg';
 import { site } from '../site.config';
 import { photo } from '../lib/photos';
 
@@ -31,16 +37,23 @@ const steps = [
     alt: 'A tray of fired crystalline test tiles in blues, greens, browns and whites',
   },
 ];
+
+const studio = [
+  { image: carving, alt: 'Hands carving concentric rings into a leather-hard plate on the wheel', caption: 'Carving rings into a plate' },
+  { image: piercing, alt: 'Cutting openings into a leather-hard bowl with a small knife', caption: 'Piercing a bowl by hand' },
+  { image: plates, alt: 'Freshly thrown plates drying on their bats', caption: 'Plates drying on their bats' },
+  { image: cylinder, alt: 'A 3D-printed clay cylinder with a twisting ridged surface, before firing', caption: 'A printed cylinder, before firing' },
+  { image: lattice, alt: 'A flat 3D-printed lattice of terracotta clay on a blue mat', caption: 'A printed lattice tile' },
+  { image: gasKiln, alt: 'The brick gas kiln stacked floor to ceiling with unglazed jugs, bowls and cups', caption: 'The Clay Art Guild\'s gas kiln, which I help load and unload' },
+];
 ---
 
-<Base title="About" description={`Kieran Ryan makes crystalline-glazed porcelain and stoneware in ${site.location}.`} image={crystals}>
-  <section class="container page-head narrow">
-    <h1 class="page-title">Glaze chemistry, slow cooling, and a little luck</h1>
-  </section>
+<Base title="Bio" description={`Kieran Ryan makes crystalline-glazed porcelain and stoneware in ${site.location}.`} image={crystals}>
+  <h1 class="visually-hidden">Bio</h1>
 
   <div class="section container">
     <div class="portrait-solo">
-      <Media image={portrait} alt={site.portrait.alt} aspect="4 / 5" label="Portrait" sizes="(max-width: 480px) 100vw, 26rem" eager />
+      <Media image={portrait} alt={site.portrait.alt} aspect="4 / 5" label="Portrait" sizes="(max-width: 600px) 100vw, 36rem" eager />
     </div>
   </div>
 
@@ -54,8 +67,9 @@ const steps = [
       </p>
       <p>
         I also pierce bowls and platters by hand, slip cast, and 3D print in clay. I teach
-        crystalline glaze workshops at the Clay Art Guild of the Hamptons and classes at Mudita
-        Ceramics School. My work has been shown at the <a href="/exhibitions/">Parrish Art Museum</a>.
+        crystalline glaze workshops at the <a href="https://www.instagram.com/clayarthamptons/" target="_blank" rel="noopener">Clay Art Guild of the Hamptons</a> and
+        classes at <a href="https://www.instagram.com/muditaceramicsschool/" target="_blank" rel="noopener">Mudita Ceramics School</a>.
+        In 2025 my work was at the <a href="/exhibitions/">Parrish Art Museum holiday market</a>.
       </p>
     </div>
   </section>
@@ -75,9 +89,24 @@ const steps = [
     </ol>
   </section>
 
+  <section class="section container" aria-labelledby="studio-heading">
+    <div class="section-head">
+      <h2 class="page-title" id="studio-heading">In the studio</h2>
+    </div>
+    <div class="photo-grid">
+      {studio.map((p) => (
+        <figure>
+          <Media image={p.image} alt={p.alt} aspect="4 / 5" sizes="(max-width: 480px) 100vw, (max-width: 760px) 50vw, 33vw" />
+          <figcaption>{p.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
   <div class="section">
     <Banner
       heading="h2"
+      below
       href="/work/"
       image={crystals}
       alt="Close-up of pale gold zinc silicate crystals spreading across a glazed surface"

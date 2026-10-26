@@ -1,10 +1,12 @@
 ---
 import { site } from '../site.config';
+import Newsletter from './Newsletter.astro';
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="container">
+    <Newsletter compact />
     <nav class="footer-nav" aria-label="Footer">
       {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
       <a href={site.instagram.url} rel="me noopener" target="_blank">Instagram</a>

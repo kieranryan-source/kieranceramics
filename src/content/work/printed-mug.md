@@ -2,6 +2,7 @@
 title: Printed stoneware mug
 year: 2025
 process: 3D-printed grogged stoneware
+categories: [3d-printed]
 image: ../../assets/photos/printed-mug.jpg
 imageAlt: A dark blue glazed mug with visible horizontal printed layers
 order: 12

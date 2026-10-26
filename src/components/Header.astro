@@ -2,7 +2,9 @@
 import { site } from '../site.config';
 
 const path = Astro.url.pathname;
-const isCurrent = (href: string) => path === href || path.startsWith(href);
+// The shipping, care and returns page sits under Shop, so Shop stays marked there too
+const isCurrent = (href: string) =>
+  path === href || path.startsWith(href) || (href === '/shop/' && path.startsWith('/shop-information/'));
 ---
 
 <header class="site-header">
@@ -13,7 +15,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(href);
     </a>
 
     <nav class="nav" aria-label="Main">
-      {site.nav.map((item) => (
+      {site.nav.filter((item) => !('footerOnly' in item)).map((item) => (
         <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
       ))}
     </nav>
@@ -21,7 +23,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(href);
     <details class="menu">
       <summary><span class="open">Menu</span><span class="close">Close</span></summary>
       <nav class="menu-panel" aria-label="Main">
-        {site.nav.map((item) => (
+        {site.nav.filter((item) => !('footerOnly' in item)).map((item) => (
           <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
         ))}
       </nav>

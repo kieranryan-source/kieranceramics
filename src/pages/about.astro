@@ -9,7 +9,6 @@ import firePhoto from '../assets/photos/process-fire.jpg';
 import carving from '../assets/photos/studio-carving.jpg';
 import piercing from '../assets/photos/studio-piercing.jpg';
 import plates from '../assets/photos/studio-plates.jpg';
-import cylinder from '../assets/photos/studio-printed-cylinder.jpg';
 import gasKiln from '../assets/photos/studio-gas-kiln.jpg';
 import { site } from '../site.config';
 import { photo } from '../lib/photos';
@@ -41,7 +40,6 @@ const studio = [
   { image: carving, alt: 'Hands carving concentric rings into a leather-hard plate on the wheel', caption: 'Carving rings into a plate' },
   { image: piercing, alt: 'Cutting openings into a leather-hard bowl with a small knife', caption: 'Piercing a bowl by hand' },
   { image: plates, alt: 'Freshly thrown plates drying on their bats', caption: 'Plates drying on their bats' },
-  { image: cylinder, alt: 'A 3D-printed clay cylinder with a twisting ridged surface, before firing', caption: 'A printed cylinder, before firing' },
   { image: gasKiln, alt: 'The brick gas kiln stacked floor to ceiling with unglazed jugs, bowls and cups', caption: 'The Clay Art Guild\'s gas kiln, which I help load and unload' },
 ];
 ---
@@ -91,10 +89,10 @@ const studio = [
     <div class="section-head">
       <h2 class="page-title" id="studio-heading">In the studio</h2>
     </div>
-    <div class="photo-grid">
+    <div class="photo-grid" style="--cols: 4">
       {studio.map((p) => (
         <figure>
-          <Media image={p.image} alt={p.alt} aspect="4 / 5" sizes="(max-width: 480px) 100vw, (max-width: 760px) 50vw, 33vw" />
+          <Media image={p.image} alt={p.alt} aspect="4 / 5" sizes="(max-width: 480px) 100vw, (max-width: 760px) 50vw, 25vw" />
           <figcaption>{p.caption}</figcaption>
         </figure>
       ))}

@@ -16,8 +16,6 @@ morePhotos:
     alt: The bottle wall held in the palm, crystals branching across the turquoise glaze
   - image: ../../assets/photos/copper-bottle-crystals.jpg
     alt: Closer view of the bottle wall, large round crystals with sharp star-shaped centers
-  - image: ../../assets/photos/copper-cup-on-catcher.jpg
-    alt: A cup straight out of the kiln, still on its glaze catcher, turquoise glaze run down the pedestal and pooled in the dish below
 featured: true
 order: 1
 shop:
